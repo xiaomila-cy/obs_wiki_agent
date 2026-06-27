@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wiki · 信息安全知识库</title>
+<style>
+:root {
+  --bg: #0f172a; --surface: #1e293b; --text: #e2e8f0; --muted: #94a3b8;
+  --accent: #38bdf8; --border: #334155; --sidebar-w: 260px;
+  --tag-bg: #1e3a5f; --tag-text: #7dd3fc;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: -apple-system, "Noto Sans SC", sans-serif; background: var(--bg); color: var(--text); display: flex; min-height: 100vh; }
+#sidebar { width: var(--sidebar-w); background: var(--surface); border-right: 1px solid var(--border); padding: 1.2rem; overflow-y: auto; position: fixed; top: 0; left: 0; bottom: 0; }
+#sidebar h1 { font-size: 1.1rem; color: var(--accent); margin-bottom: 1.2rem; }
+#sidebar .section { margin-bottom: 1.2rem; }
+#sidebar .section-title { font-size: 0.75rem; text-transform: uppercase; color: var(--muted); margin-bottom: 0.4rem; letter-spacing: 0.5px; }
+#sidebar a { display: block; color: var(--text); text-decoration: none; padding: 0.25rem 0; font-size: 0.88rem; transition: color 0.15s; }
+#sidebar a:hover, #sidebar a.active { color: var(--accent); }
+#content { margin-left: var(--sidebar-w); padding: 2rem 2.5rem; max-width: 800px; width: 100%; }
+#content h1 { font-size: 1.6rem; margin-bottom: 1rem; color: #fff; }
+#content h2 { font-size: 1.25rem; margin: 2rem 0 0.8rem; color: var(--accent); border-bottom: 1px solid var(--border); padding-bottom: 0.3rem; }
+#content h3 { font-size: 1.05rem; margin: 1.2rem 0 0.5rem; }
+#content p { margin: 0.7rem 0; line-height: 1.75; color: var(--text); }
+#content ul, #content ol { margin: 0.5rem 0; padding-left: 1.5rem; }
+#content li { margin: 0.3rem 0; line-height: 1.6; }
+#content code { background: var(--border); padding: 0.15em 0.4em; border-radius: 4px; font-size: 0.88em; }
+#content pre { background: #0f172a; padding: 1rem; border-radius: 8px; overflow-x: auto; margin: 1rem 0; border: 1px solid var(--border); }
+#content pre code { background: none; padding: 0; }
+#content blockquote { border-left: 3px solid var(--accent); padding: 0.5rem 1rem; margin: 1rem 0; color: var(--muted); }
+#content a { color: var(--accent); text-decoration: none; }
+#content a:hover { text-decoration: underline; }
+#content table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+#content th, #content td { padding: 0.5rem 0.8rem; text-align: left; border: 1px solid var(--border); }
+#content th { background: var(--surface); font-weight: 600; }
+.tag { display: inline-block; background: var(--tag-bg); color: var(--tag-text); padding: 0.15em 0.5em; border-radius: 4px; font-size: 0.8rem; margin: 0.15rem; }
+.conf-low { color: #facc15; }
+.conf-med { color: #fb923c; }
+.conf-high { color: #4ade80; }
+.contested { color: #f87171; font-weight: 600; }
+.loading { color: var(--muted); font-style: italic; padding: 2rem 0; }
+.empty-state { text-align: center; padding: 4rem 1rem; color: var(--muted); }
+.empty-state h2 { font-size: 1.3rem; color: var(--text); margin-bottom: 0.5rem; border: none; }
+.empty-state p { margin: 0.3rem 0; }
+
+@media (max-width: 768px) {
+  body { flex-direction: column; }
+  #sidebar { position: relative; width: 100%; border-right: none; border-bottom: 1px solid var(--border); padding: 1rem; }
+  #content { margin-left: 0; padding: 1.2rem; }
+}
+</style>
+</head>
+<body>
+
+<nav id="sidebar">
+  <h1>🔐 信息安全 Wiki</h1>
+  <div class="section">
+    <div class="section-title">📋 导航</div>
+    <a href="#" data-page="index.md">📑 目录总览</a>
+    <a href="#" data-page="SCHEMA.md">📐 Schema 规范</a>
+    <a href="#" data-page="log.md">📝 操作日志</a>
+  </div>
+  <div class="section" id="entity-links">
+    <div class="section-title">🏢 实体</div>
+    <div style="color:var(--muted);font-size:0.82rem;">暂无页面</div>
+  </div>
+  <div class="section" id="concept-links">
+    <div class="section-title">📖 概念</div>
+    <div style="color:var(--muted);font-size:0.82rem;">暂无页面</div>
+  </div>
+  <div class="section" id="comparison-links">
+    <div class="section-title">⚖️ 对比</div>
+    <div style="color:var(--muted);font-size:0.82rem;">暂无页面</div>
+  </div>
+</nav>
+
+<main id="content">
+  <div class="loading">加载中...</div>
+</main>
+
+<script>
+const WIKI = '/wiki/';
+
+// Simple markdown-to-HTML (handles common patterns)
+function md2html(md) {
+  let html = md;
+  // YAML frontmatter removal
+  html = html.replace(/^---[\s\S]*?---\n*/, '');
+  // Wikilinks: [[page-name]] → linked
+  html = html.replace(/\[\[([^\]]+)\]\]/g, '<a href="#" data-page="entities/$1.md">$1</a>');
+  // Headers
+  html = html.replace(/^#### (.+)$/gm, '<h4>$1</h4>');
+  html = html.replace(/^### (.+)$/gm, '<h3>$1</h3>');
+  html = html.replace(/^## (.+)$/gm, '<h2>$1</h2>');
+  html = html.replace(/^# (.+)$/gm, '<h1>$1</h1>');
+  // Bold
+  html = html.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+  // Italic
+  html = html.replace(/\*(.+?)\*/g, '<em>$1</em>');
+  // Inline code
+  html = html.replace(/`([^`]+)`/g, '<code>$1</code>');
+  // Code blocks
+  html = html.replace(/```(\w*)\n([\s\S]*?)```/g, '<pre><code>$2</code></pre>');
+  // Blockquotes
+  html = html.replace(/^> (.+)$/gm, '<blockquote>$1</blockquote>');
+  // Horizontal rules
+  html = html.replace(/^---$/gm, '<hr>');
+  // Links
+  html = html.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank">$1</a>');
+  // Unordered lists
+  html = html.replace(/^- (.+)$/gm, '<li>$1</li>');
+  html = html.replace(/((?:<li>.*<\/li>\n?)+)/g, '<ul>$1</ul>');
+  // Ordered lists  
+  html = html.replace(/^\d+\. (.+)$/gm, '<li>$1</li>');
+  // Tables
+  html = html.replace(/^\|(.+)\|$/gm, function(m) {
+    var cells = m.split('|').filter(c => c.trim());
+    if (m.match(/^[\|\-\s:]+$/)) return ''; // separator row
+    var tds = cells.map(c => {
+      c = c.trim();
+      return c.startsWith('**') ? '<td><strong>' + c.replace(/\*\*/g,'') + '</strong></td>' : '<td>' + c + '</td>';
+    }).join('');
+    return '<tr>' + tds + '</tr>';
+  });
+  html = html.replace(/((?:<tr>.*<\/tr>\n?)+)/g, function(m) {
+    // First tr is header
+    return '<table>' + m.replace(/<tr>/, '<thead><tr>').replace(/<\/tr>/, '</tr></thead><tbody>') + '</tbody></table>';
+  });
+  // Paragraphs (lines not already wrapped)
+  var lines = html.split('\n');
+  var result = [];
+  var inList = false;
+  for (var i = 0; i < lines.length; i++) {
+    var line = lines[i].trim();
+    if (!line) continue;
+    if (line.startsWith('<h') || line.startsWith('<table') || line.startsWith('<pre') || 
+        line.startsWith('<ul') || line.startsWith('<ol') || line.startsWith('<li') ||
+        line.startsWith('<blockquote') || line.startsWith('<hr') || line.startsWith('<tr') ||
+        line.startsWith('<thead') || line.startsWith('<tbody') || line.startsWith('</')) {
+      result.push(line);
+    } else {
+      result.push('<p>' + line + '</p>');
+    }
+  }
+  return result.join('\n');
+}
+
+async function loadPage(page) {
+  const content = document.getElementById('content');
+  content.innerHTML = '<div class="loading">加载中...</div>';
+  
+  // Remove .md from data-page for direct server access
+  const cleanPage = page.replace('.md','');
+  try {
+    const resp = await fetch(cleanPage + '.md');
+    if (!resp.ok) {
+      // Try with path prefix
+      const resp2 = await fetch(page);
+      if (!resp2.ok) throw new Error('404');
+      const md = await resp2.text();
+      content.innerHTML = md2html(md);
+    } else {
+      const md = await resp.text();
+      content.innerHTML = md2html(md);
+    }
+    // Highlight active link
+    document.querySelectorAll('#sidebar a').forEach(a => a.classList.remove('active'));
+    const active = document.querySelector(`[data-page="${page}"]`);
+    if (active) active.classList.add('active');
+  } catch(e) {
+    content.innerHTML = '<div class="empty-state"><h2>📄 页面待创建</h2><p>这个页面还没有内容，等王哥喂资料进来就有了~</p></div>';
+  }
+}
+
+// Click handlers
+document.getElementById('sidebar').addEventListener('click', function(e) {
+  if (e.target.tagName === 'A' && e.target.dataset.page) {
+    e.preventDefault();
+    loadPage(e.target.dataset.page);
+    history.pushState(null, '', '#' + e.target.dataset.page);
+  }
+});
+
+// Load initial page
+const hash = location.hash ? location.hash.slice(1) : 'index.md';
+loadPage(hash);
+
+// Listen for hash changes
+window.addEventListener('hashchange', function() {
+  loadPage(location.hash.slice(1) || 'index.md');
+});
+</script>
+
+</body>
+</html>
