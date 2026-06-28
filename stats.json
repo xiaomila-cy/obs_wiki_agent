@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-28 16:09:54",
+  "generated_at": "2026-06-28 16:12:52",
   "total_pages": 24,
   "type_count": {
     "entity": 13,
@@ -10,7 +10,79 @@
   "top_tags": [
     {
       "name": "制度",
-      "count": 24
+      "count": 21
+    },
+    {
+      "name": "应急响应",
+      "count": 6
+    },
+    {
+      "name": "终端安全",
+      "count": 4
+    },
+    {
+      "name": "治理",
+      "count": 3
+    },
+    {
+      "name": "供应链",
+      "count": 3
+    },
+    {
+      "name": "数据安全",
+      "count": 3
+    },
+    {
+      "name": "风险管理",
+      "count": 2
+    },
+    {
+      "name": "报告",
+      "count": 2
+    },
+    {
+      "name": "社工防范",
+      "count": 2
+    },
+    {
+      "name": "运营",
+      "count": 2
+    },
+    {
+      "name": "应用安全",
+      "count": 1
+    },
+    {
+      "name": "数据防泄漏",
+      "count": 1
+    },
+    {
+      "name": "云桌面",
+      "count": 1
+    },
+    {
+      "name": "标准",
+      "count": 1
+    },
+    {
+      "name": "法规",
+      "count": 1
+    },
+    {
+      "name": "合规",
+      "count": 1
+    },
+    {
+      "name": "漏洞管理",
+      "count": 1
+    },
+    {
+      "name": "架构",
+      "count": 1
+    },
+    {
+      "name": "护网",
+      "count": 1
     }
   ],
   "domains": [
@@ -58,6 +130,7 @@
       "path": "entities/app安全管理制度.md",
       "domain": "it-security",
       "tags": [
+        "应用安全",
         "制度"
       ],
       "updated": "2026-06-28"
@@ -68,7 +141,9 @@
       "path": "entities/dlp采购需求清单.md",
       "domain": "it-security",
       "tags": [
-        "制度"
+        "终端安全",
+        "制度",
+        "数据防泄漏"
       ],
       "updated": "2026-06-28"
     },
@@ -78,6 +153,7 @@
       "path": "entities/信息安全红线制度.md",
       "domain": "it-security",
       "tags": [
+        "治理",
         "制度"
       ],
       "updated": "2026-06-28"
@@ -88,6 +164,7 @@
       "path": "entities/信息安全违规问责管理办法.md",
       "domain": "it-security",
       "tags": [
+        "治理",
         "制度"
       ],
       "updated": "2026-06-28"
@@ -98,7 +175,9 @@
       "path": "entities/信息科技外包风险管理评估报告.md",
       "domain": "it-security",
       "tags": [
-        "制度"
+        "风险管理",
+        "报告",
+        "供应链"
       ],
       "updated": "2026-06-28"
     },
@@ -108,7 +187,8 @@
       "path": "entities/信息科技风险管理报告.md",
       "domain": "it-security",
       "tags": [
-        "制度"
+        "风险管理",
+        "报告"
       ],
       "updated": "2026-06-28"
     },
@@ -118,7 +198,9 @@
       "path": "entities/办公云桌面it安全管理规范.md",
       "domain": "it-security",
       "tags": [
-        "制度"
+        "终端安全",
+        "制度",
+        "云桌面"
       ],
       "updated": "2026-06-28"
     },
@@ -128,6 +210,7 @@
       "path": "entities/办公终端产品选型需求清单.md",
       "domain": "it-security",
       "tags": [
+        "终端安全",
         "制度"
       ],
       "updated": "2026-06-28"
@@ -138,6 +221,7 @@
       "path": "entities/数据安全管理制度.md",
       "domain": "it-security",
       "tags": [
+        "数据安全",
         "制度"
       ],
       "updated": "2026-06-28"
@@ -148,7 +232,9 @@
       "path": "entities/标准规范与制度体系.md",
       "domain": "it-security",
       "tags": [
-        "制度"
+        "标准",
+        "法规",
+        "合规"
       ],
       "updated": "2026-06-28"
     }

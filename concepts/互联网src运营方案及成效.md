@@ -3,7 +3,7 @@ title: 互联网SRC运营方案及成效
 created: 2026-06-28
 updated: 2026-06-28
 type: concept
-tags: [制度]
+tags: [应急响应, 制度, 运营]
 domain: it-security
 sources: [飞书知识库]
 ---

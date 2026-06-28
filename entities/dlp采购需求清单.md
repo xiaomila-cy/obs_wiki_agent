@@ -3,7 +3,7 @@ title: dlp采购需求清单
 created: 2026-06-28
 updated: 2026-06-28
 type: entity
-tags: [制度]
+tags: [终端安全, 制度, 数据防泄漏]
 domain: it-security
 sources: [飞书知识库]
 ---
