@@ -48,7 +48,7 @@ body{font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans SC
 [data-theme="dark"] .tag-click:hover{background:#3b82f6;color:#fff}
 .recent-item{display:flex;align-items:center;gap:.5rem;padding:.35rem 0;border-bottom:1px solid var(--border);font-size:.82rem}.recent-item:last-child{border:none}
 .rd{font-size:.7rem;color:var(--muted);min-width:42px}
-.rb{font-size:.62rem;padding:.1em .35em;border-radius:3px;min-width:36px;text-align:center;font-weight:600}
+.rb{font-size:.62rem;padding:.1em .35em;border-radius:3px;min-width:36px;text-align:center;font-weight:600;background:var(--hover);color:var(--text)}
 .rb-e{background:#eff6ff;color:#2563eb}.rb-c{background:#f0fdf4;color:#16a34a}.rb-x{background:#fffbeb;color:#d97706}.rb-q{background:#faf5ff;color:#9333ea}
 [data-theme="dark"] .rb-e{background:#1e3a5f;color:#7dd3fc}[data-theme="dark"] .rb-c{background:#14532d;color:#86efac}
 [data-theme="dark"] .rb-x{background:#3b2e00;color:#fcd34d}[data-theme="dark"] .rb-q{background:#3b0764;color:#c084fc}
@@ -105,7 +105,8 @@ initTheme();
 // Data
 var TYPES={}
 var TYPE_COLORS={'制度':'#2563eb','方案':'#16a34a','报告':'#d97706','案例':'#9333ea','标准':'#0891b2','对比':'#6366f1'};
-var TL={entity:'rb-e',concept:'rb-c',comparison:'rb-x',query:'rb-q'};
+var TL={}
+var TYPE_COLORS_MAIN={'制度':'#2563eb','方案':'#16a34a','报告':'#d97706','案例':'#9333ea','标准':'#0891b2'}
 var DOMS_LOOKUP={'it-security':{emoji:'🔐',name:'IT网络与数据安全'},'auto-security':{emoji:'🚗',name:'智能网联汽车安全'},'investment':{emoji:'📈',name:'投资之路'},'daily':{emoji:'📝',name:'日常记录'},'ai-learning':{emoji:'🤖',name:'AI学习'},'other':{emoji:'📦',name:'其他'}};
 var allTags=[],allPages=[];
 
@@ -189,7 +190,7 @@ function render(s,domains){
   // Recent — clickable
   html+='<div class="sec-title">📅 最近更新</div><div class="detail-card">';
   s.recent.slice(0,8).forEach(function(p){
-    html+='<div class="recent-item" style="cursor:pointer" onclick="location.href=\'index.html?page='+encodeURIComponent(p.path)+'\'"><span class="rd">'+(p.updated.slice(-5)||'-')+'</span><span class="rb '+TYPE_COLORS[p.type]||'rb-e'+'">'+p.type+'</span><span>'+p.title+'</span></div>';
+    html+='<div class="recent-item" style="cursor:pointer" onclick="location.href=\'index.html?page='+encodeURIComponent(p.path)+'\'"><span class="rd">'+(p.updated.slice(-5)||'-')+'</span><span class="rb">'+p.type+'</span><span>'+p.title+'</span></div>';
   });
   html+='</div>';
 

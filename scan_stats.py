@@ -45,7 +45,7 @@ def classify_domain(tags, explicit_domain):
 def scan_wiki():
     pages = []
     tags_count = {}
-    type_count = {"entity": 0, "concept": 0, "comparison": 0, "query": 0}
+    type_count = {}
     confidence_count = {"high": 0, "medium": 0, "low": 0}
     domain_count = {dm["id"]: 0 for dm in DOMAINS}
     domain_count["other"] = 0
@@ -83,8 +83,7 @@ def scan_wiki():
             total += 1
             
             t = page["type"]
-            if t in type_count:
-                type_count[t] += 1
+            type_count[t] = type_count.get(t, 0) + 1
             
             for tag in page["tags"]:
                 tags_count[tag] = tags_count.get(tag, 0) + 1
