@@ -1,10 +1,17 @@
 # Wiki Schema
 
 ## Domain
-王哥的个人知识库，涵盖但不限于：
-- 信息安全（数据安全、个保、汽车安全合规、企业安全建设）
-- A股投资（个股分析、行业研究、交易策略）
-- 其他王哥关注的领域
+王哥的个人知识库，分为 5 个板块（在 `domains.json` 管理，随时可增删）：
+
+| 板块 | ID | 覆盖内容 |
+|------|-----|---------|
+| 🔐 IT网络与数据安全 | `it-security` | 等保、关基、数据分类分级、个保法、应急响应 |
+| 🚗 智能网联汽车安全 | `auto-security` | UN R155/R156、ISO 21434、GB国标、CSMS/VTA |
+| 📈 投资之路 | `investment` | A股投资、个股分析、基金持仓、交易策略 |
+| 📝 日常记录 | `daily` | 日常想法、随手记录、读书笔记 |
+| 🤖 AI学习 | `ai-learning` | 大模型、Agent开发、Prompt工程、AI工具 |
+
+每页的 `domain` 字段对应上面的 ID，不填则通过标签自动归类。
 
 ## Conventions
 - File names: lowercase, hyphens, no spaces (e.g., `personal-information-protection-law.md`)

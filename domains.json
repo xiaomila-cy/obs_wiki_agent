@@ -1,0 +1,39 @@
+{
+  "domains": [
+    {
+      "id": "it-security",
+      "name": "IT网络与数据安全",
+      "emoji": "🔐",
+      "tags": ["regulation", "standard", "compliance", "encryption", "network-security", "privacy", "incident-response", "risk-management", "audit", "governance", "threat-modeling", "penetration-test", "vulnerability", "apt", "dlp", "soc"],
+      "desc": "等保、关基、数据分类分级、个保法、应急响应"
+    },
+    {
+      "id": "auto-security",
+      "name": "智能网联汽车安全",
+      "emoji": "🚗",
+      "tags": ["csms", "vta", "sums", "iso21434", "un-r155", "un-r156", "automotive", "gb-standard"],
+      "desc": "UN R155/R156、ISO/SAE 21434、GB国标、CSMS/VTA"
+    },
+    {
+      "id": "investment",
+      "name": "投资之路",
+      "emoji": "📈",
+      "tags": ["stock", "a-share", "investment", "fund", "finance", "portfolio", "analysis", "trading"],
+      "desc": "A股投资、个股分析、基金持仓、交易策略"
+    },
+    {
+      "id": "daily",
+      "name": "日常记录",
+      "emoji": "📝",
+      "tags": ["note", "journal", "diary", "memo"],
+      "desc": "日常想法、随手记录、读书笔记"
+    },
+    {
+      "id": "ai-learning",
+      "name": "AI学习",
+      "emoji": "🤖",
+      "tags": ["ai", "ml", "llm", "deep-learning", "agent", "prompt-engineering", "skill"],
+      "desc": "大模型、Agent开发、Prompt工程、AI工具"
+    }
+  ]
+}

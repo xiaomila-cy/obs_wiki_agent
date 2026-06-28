@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>🌶️ 小米辣的个人知识库</title>
+<style>
+:root{--bg:#0f172a;--surface:#1e293b;--text:#e2e8f0;--muted:#94a3b8;--accent:#f59e0b;--accent2:#38bdf8;--border:#334155;--green:#4ade80;--red:#f87171;--orange:#fb923c;--tag-bg:#1e3a5f;--tag-text:#7dd3fc}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,"Noto Sans SC",sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
+.header{background:linear-gradient(135deg,#1e293b 0%,#0f172a 100%);border-bottom:1px solid var(--border);padding:1.5rem 2rem;text-align:center}
+.header h1{font-size:1.6rem;color:var(--accent)}.header .subtitle{color:var(--muted);margin-top:.3rem;font-size:.9rem}
+.container{max-width:1100px;margin:0 auto;padding:1.5rem}
+.grid{display:grid;gap:1rem}.grid-3{grid-template-columns:repeat(3,1fr)}.grid-2{grid-template-columns:1fr 1fr}.grid-4{grid-template-columns:repeat(4,1fr)}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.2rem}
+.card-title{font-size:.75rem;text-transform:uppercase;color:var(--muted);margin-bottom:.8rem;letter-spacing:.5px}
+.stat-num{font-size:2rem;font-weight:700}.stat-label{font-size:.82rem;color:var(--muted);margin-top:.2rem}
+.stat-top{border-left:3px solid var(--accent);padding-left:.8rem}.stat-top .stat-num{color:var(--accent)}
+.type-bar{display:flex;align-items:center;margin:.4rem 0;font-size:.85rem}.type-bar .label{width:70px;color:var(--muted)}.type-bar .bar-wrap{flex:1;background:var(--border);border-radius:4px;height:8px;margin:0 .6rem}.type-bar .bar-fill{height:100%;border-radius:4px}.type-bar .count{width:32px;text-align:right}
+.bar-entity{background:var(--accent2)}.bar-concept{background:var(--green)}.bar-comparison{background:var(--orange)}.bar-query{background:#c084fc}
+.tag{display:inline-block;padding:.2em .6em;border-radius:4px;font-size:.8rem;margin:.2rem}.tag-sm{font-size:.72rem}.tag-cloud .tag{background:var(--tag-bg);color:var(--tag-text)}
+.recent-item{display:flex;align-items:baseline;gap:.5rem;padding:.35rem 0;border-bottom:1px solid var(--border);font-size:.85rem}.recent-item:last-child{border-bottom:none}
+.recent-date{color:var(--muted);font-size:.75rem;min-width:50px}.recent-type{font-size:.65rem;padding:.1em .4em;border-radius:3px;min-width:36px;text-align:center}
+.type-entity{background:#1e3a5f;color:#7dd3fc}.type-concept{background:#14532d;color:#86efac}.type-comparison{background:#3b2e00;color:#fcd34d}.type-query{background:#3b0764;color:#c084fc}
+.conf-dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:4px}.conf-high{background:var(--green)}.conf-med{background:var(--orange)}.conf-low{background:var(--red)}
+.domain-card{text-align:center;cursor:pointer;transition:transform .1s;text-decoration:none;color:inherit;display:block}
+.domain-card:hover{transform:translateY(-2px);border-color:var(--accent)}
+.domain-card .emoji{font-size:2rem;margin-bottom:.4rem}
+.domain-card .name{font-weight:600;font-size:.9rem}
+.domain-card .count{font-size:.8rem;color:var(--accent);margin-top:.4rem}
+.empty{text-align:center;padding:3rem 1rem;color:var(--muted)}.empty h3{font-size:1.1rem;color:var(--text);margin-bottom:.5rem}
+@media(max-width:768px){.grid-3,.grid-2,.grid-4{grid-template-columns:1fr}.header{padding:1rem}.header h1{font-size:1.3rem}.container{padding:.8rem}}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>🌶️ 小米辣的个人知识库</h1>
+  <p class="subtitle" id="header-sub">加载中...</p>
+</div>
+
+<div class="container" id="dashboard"><div class="empty"><p>加载中...</p></div></div>
+
+<script>
+async function load(){
+  try{
+    const r=await fetch('stats.json');const s=await r.json();render(s)
+  }catch(e){
+    document.getElementById('dashboard').innerHTML='<div class="empty"><h3>📊 暂无统计</h3><p>等 Wiki 有页面就自动生成~</p></div>'
+  }
+}
+
+function render(s){
+  document.getElementById('header-sub').textContent="共 "+s.total_pages+" 篇 · 更新于 "+s.generated_at;
+  if(s.total_pages===0){
+    document.getElementById('dashboard').innerHTML='<div class="empty"><h3>🌱 知识库还是空的</h3><p>开始往里喂材料吧！</p><p style="font-size:.8rem;margin-top:1rem;color:var(--muted)">板块已就绪：IT安全 · 汽车安全 · 投资 · 日常 · AI</p></div>';
+    return;
+  }
+  const maxType=Math.max(1,...Object.values(s.type_count));
+
+  document.getElementById('dashboard').innerHTML=
+    '<div class="grid grid-4" style="margin-bottom:1rem">'+
+      '<div class="card stat-top"><div class="stat-num">'+s.total_pages+'</div><div class="stat-label">📄 总页面</div></div>'+
+      '<div class="card"><div class="stat-num" style="color:var(--accent2)">'+s.trend['7d']+'</div><div class="stat-label">📈 近 7 天更新</div></div>'+
+      '<div class="card"><div class="stat-num" style="color:var(--green)">'+s.confidence_count.high+'</div><div class="stat-label">✅ 高置信度</div></div>'+
+      '<div class="card"><div class="stat-num" style="color:'+(s.contested>0?'var(--red)':'var(--muted)')+'">'+s.contested+'</div><div class="stat-label">⚠️ 争议条目</div></div>'+
+    '</div>'+
+
+    '<div class="card-title" style="margin-bottom:.5rem">📂 知识板块</div>'+
+    '<div class="grid grid-3" style="margin-bottom:1rem">'+
+      s.domains.map(function(d){return '<a class="card domain-card" href="index.html?domain='+d.id+'"><div class="emoji">'+d.emoji+'</div><div class="name">'+d.name+'</div><div class="count">'+d.count+' 篇</div></a>'}).join('')+
+    '</div>'+
+
+    '<div class="grid grid-3" style="margin-bottom:1rem">'+
+      '<div class="card"><div class="card-title">📂 按类型</div>'+
+        ['entity','concept','comparison','query'].map(function(t){
+          var lb={entity:'实体',concept:'概念',comparison:'对比',query:'查询'};
+          var fl={entity:'bar-entity',concept:'bar-concept',comparison:'bar-comparison',query:'bar-query'};
+          return '<div class="type-bar"><span class="label">'+lb[t]+'</span><span class="bar-wrap"><span class="bar-fill '+fl[t]+'" style="width:'+(s.type_count[t]/maxType*100)+'%"></span></span><span class="count">'+s.type_count[t]+'</span></div>';
+        }).join('')+
+      '</div>'+
+      '<div class="card"><div class="card-title">🏷️ 热门标签</div><div class="tag-cloud">'+s.top_tags.map(function(t){return '<span class="tag tag-sm" style="font-size:'+(0.72+t.count/maxType*0.25)+'rem">'+t.name+' '+t.count+'</span>'}).join(' ')+'</div></div>'+
+      '<div class="card"><div class="card-title">📊 更新趋势</div>'+
+        '<div class="type-bar"><span class="label">30 天</span><span class="bar-wrap"><span class="bar-fill bar-entity" style="width:100%"></span></span><span class="count">'+s.trend['30d']+'</span></div>'+
+        '<div class="type-bar"><span class="label">14 天</span><span class="bar-wrap"><span class="bar-fill bar-concept" style="width:'+(s.trend['14d']/Math.max(1,s.trend['30d'])*100)+'%"></span></span><span class="count">'+s.trend['14d']+'</span></div>'+
+        '<div class="type-bar"><span class="label">7 天</span><span class="bar-wrap"><span class="bar-fill bar-comparison" style="width:'+(s.trend['7d']/Math.max(1,s.trend['30d'])*100)+'%"></span></span><span class="count">'+s.trend['7d']+'</span></div>'+
+        '<div style="margin-top:.8rem;color:var(--muted);font-size:.8rem">'+(s.trend['7d']>0?'🔥 持续更新中':s.trend['14d']>0?'📖 近期有更新':'💤 最近较安静')+'</div>'+
+      '</div>'+
+    '</div>'+
+
+    '<div class="grid grid-2" style="margin-bottom:1rem">'+
+      '<div class="card"><div class="card-title">📅 最近更新</div>'+s.recent.slice(0,8).map(function(p){return '<div class="recent-item"><span class="recent-date">'+(p.updated.slice(-5)||'-')+'</span><span class="recent-type type-'+p.type+'">'+p.type+'</span><span>'+p.title+'</span></div>'}).join('')+'</div>'+
+      '<div class="card"><div class="card-title">🎯 置信度分布</div><div style="display:flex;gap:1.5rem;align-items:center;flex-wrap:wrap;margin-top:.5rem"><div><span class="conf-dot conf-high"></span>高：<strong>'+s.confidence_count.high+'</strong></div><div><span class="conf-dot conf-med"></span>中：<strong>'+s.confidence_count.medium+'</strong></div><div><span class="conf-dot conf-low"></span>低：<strong>'+s.confidence_count.low+'</strong></div>'+(s.contested>0?'<div>⚠️ 争议：<strong style="color:var(--red)">'+s.contested+'</strong></div>':'')+'</div></div>'+
+    '</div>';
+}
+
+load();
+</script>
+</body>
+</html>

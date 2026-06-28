@@ -1,0 +1,28 @@
+{
+  "generated_at": "2026-06-28 09:43:43",
+  "total_pages": 0,
+  "type_count": {
+    "entity": 0,
+    "concept": 0,
+    "comparison": 0,
+    "query": 0
+  },
+  "top_tags": [],
+  "confidence_count": {
+    "high": 0,
+    "medium": 0,
+    "low": 0
+  },
+  "contested": 0,
+  "domains": {
+    "信息安全": 0,
+    "A股投资": 0,
+    "其他": 0
+  },
+  "recent": [],
+  "trend": {
+    "30d": 0,
+    "14d": 0,
+    "7d": 0
+  }
+}
