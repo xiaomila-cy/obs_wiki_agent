@@ -81,6 +81,7 @@ body{font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans SC
   <nav>
     <a href="dashboard.html" class="active">仪表盘</a>
     <a href="index.html?domain=it-security">文档</a>
+    <a href="daily.html">📖 必读</a>
     <button class="theme-btn" onclick="toggleTheme()" id="themeBtn">🌙</button>
   </nav>
 </header>
@@ -90,8 +91,6 @@ body{font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans SC
   <p id="hero-sub">加载中...</p>
   <div class="hero-stats" id="hero-stats"></div>
 </div>
-
-<div id="dailyReadSection"></div>
 
 <div class="container" id="app"><div class="empty"><p>加载中...</p></div></div>
 
@@ -109,36 +108,7 @@ var TL={entity:'rb-e',concept:'rb-c',comparison:'rb-x',query:'rb-q'};
 var DOMS_LOOKUP={'it-security':{emoji:'🔐',name:'IT网络与数据安全'},'auto-security':{emoji:'🚗',name:'智能网联汽车安全'},'investment':{emoji:'📈',name:'投资之路'},'daily':{emoji:'📝',name:'日常记录'},'ai-learning':{emoji:'🤖',name:'AI学习'},'other':{emoji:'📦',name:'其他'}};
 var allTags=[],allPages=[];
 
-function loadDailyRead(){
-  var today=new Date().toISOString().slice(0,10);
-  var stored=localStorage.getItem('daily_read_'+today);
-  var read=stored?JSON.parse(stored):[false,false];
-  
-  fetch('daily_read.json').then(function(r){return r.json()}).then(function(d){
-    if(d.date!==today){document.getElementById('dailyReadSection').innerHTML='';return}
-    var allRead=read[0]&&read[1];
-    var html='<div class="daily-read">';
-    html+='<div class="dr-header"><span class="dr-icon">📖</span><span class="dr-title">每日必读</span><span class="dr-badge '+(allRead?'dr-done':'dr-pending')+'">'+(allRead?'✅ 已完成':'⏳ 待完成')+'</span></div>';
-    d.articles.forEach(function(a,i){
-      html+='<div class="dr-item'+(read[i]?' read':'')+'" onclick="markDailyRead('+i+',\''+a.path+'\')"><span class="dr-num">'+(i+1)+'</span><span class="dr-check">'+(read[i]?'✓':'')+'</span><div><div class="dr-text">'+a.title+'</div><div class="dr-domain">'+(DOMS_LOOKUP[a.domain]?DOMS_LOOKUP[a.domain].emoji+' ':'')+TYPES[a.type]+'</div></div></div>';
-    });
-    html+='<div style="margin-top:.6rem;font-size:.72rem;color:var(--muted)">'+(allRead?'全部读完，明天继续加油 🔥':'点击文章跳转阅读，读完自动标记')+'</div>';
-    html+='</div>';
-    document.getElementById('dailyReadSection').innerHTML=html;
-  }).catch(function(){});
-}
-
-function markDailyRead(idx,path){
-  if(event)event.stopPropagation();
-  var today=new Date().toISOString().slice(0,10);
-  var stored=localStorage.getItem('daily_read_'+today);
-  var read=stored?JSON.parse(stored):[false,false];
-  read[idx]=true;localStorage.setItem('daily_read_'+today,JSON.stringify(read));
-  window.open('index.html?page='+encodeURIComponent(path),'_blank');
-}
-
 async function init(){
-  loadDailyRead();
   try{
     var sr=await fetch('stats.json');var s=await sr.json();
     var dr=await fetch('domains.json');var dm=await dr.json();

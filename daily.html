@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>📖 每日必读 · 小米辣</title>
+<style>
+:root{--bg:#fafbfc;--surface:#fff;--text:#1a1a2e;--muted:#6b7280;--accent:#f59e0b;--blue:#3b82f6;--border:#e5e7eb;--hover:#f3f4f6;--shadow-lg:0 4px 12px rgba(0,0,0,.06);--green:#22c55e;--green-bg:#dcfce7;--orange:#d97706;--orange-bg:#fef3c7}
+[data-theme="dark"]{--bg:#0f172a;--surface:#1e293b;--text:#e2e8f0;--muted:#94a3b8;--accent:#fbbf24;--blue:#60a5fa;--border:#334155;--hover:#1e293b;--shadow-lg:0 4px 12px rgba(0,0,0,.4);--green:#4ade80;--green-bg:#14532d;--orange:#fcd34d;--orange-bg:#3b2e00}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans SC",sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;transition:background .2s,color .2s}
+.navbar{position:sticky;top:0;z-index:20;background:var(--surface);border-bottom:1px solid var(--border);padding:0 1.5rem;height:52px;display:flex;align-items:center;gap:1rem}
+.navbar .logo{font-weight:700;font-size:1rem;color:var(--text);text-decoration:none;display:flex;align-items:center;gap:.4rem}
+.navbar nav{display:flex;gap:1rem;margin-left:auto;align-items:center;font-size:.84rem}
+.navbar nav a{color:var(--muted);text-decoration:none;transition:color .15s;padding:.2rem 0}
+.navbar nav a:hover,.navbar nav a.active{color:var(--blue)}
+.theme-btn{background:none;border:1px solid var(--border);border-radius:6px;padding:.25rem .5rem;cursor:pointer;font-size:.85rem;color:var(--muted);transition:all .15s;line-height:1}
+.theme-btn:hover{background:var(--hover);color:var(--text)}
+
+.container{max-width:640px;margin:0 auto;padding:2rem 1.5rem}
+.page-header{text-align:center;margin-bottom:2rem}
+.page-header h1{font-size:1.5rem;font-weight:800;margin-bottom:.3rem}
+.page-header p{font-size:.85rem;color:var(--muted)}
+.day-badge{display:inline-block;padding:.2em .8em;border-radius:20px;font-size:.78rem;font-weight:600;margin-bottom:.8rem}
+
+.status-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:1.5rem;margin-bottom:2rem;box-shadow:var(--shadow-lg)}
+.status-done{border-color:var(--green)}
+.status-pending{border-color:var(--accent)}
+.status-card h2{font-size:1rem;display:flex;align-items:center;gap:.5rem;margin-bottom:1rem}
+.status-icon{font-size:1.3rem}
+
+.article-card{display:flex;align-items:center;gap:.8rem;padding:.8rem 1rem;border-radius:10px;margin:.4rem 0;cursor:pointer;transition:all .15s;border:1px solid var(--border);background:var(--surface)}
+.article-card:hover{border-color:var(--blue);box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.article-card.completed{opacity:.55;background:var(--hover)}
+.article-card .num{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.8rem;font-weight:700;flex-shrink:0;transition:all .2s}
+.num-pending{background:var(--border);color:var(--muted)}
+.num-done{background:var(--green-bg);color:var(--green)}
+.article-body{flex:1;min-width:0}
+.article-title{font-weight:600;font-size:.9rem;line-height:1.3}
+.article-meta{font-size:.72rem;color:var(--muted);margin-top:.15rem}
+.article-arrow{color:var(--muted);font-size:.85rem;flex-shrink:0}
+
+.footer-note{text-align:center;padding:1.5rem;font-size:.78rem;color:var(--muted);line-height:1.6}
+
+.history-section{margin-top:2.5rem}
+.history-section h3{font-size:.82rem;font-weight:600;color:var(--muted);margin-bottom:.8rem;text-transform:uppercase;letter-spacing:.5px}
+.history-item{display:flex;align-items:center;gap:.5rem;padding:.25rem 0;font-size:.8rem}
+.history-date{color:var(--muted);font-size:.72rem;min-width:50px}
+.history-check{font-size:.7rem;min-width:20px}
+@media(max-width:768px){.container{padding:1.2rem .8rem}.navbar{padding:0 1rem}}
+</style>
+</head>
+<body>
+
+<header class="navbar">
+  <a href="dashboard.html" class="logo">🌶️ 小米辣</a>
+  <nav>
+    <a href="dashboard.html">仪表盘</a>
+    <a href="index.html?domain=it-security">文档</a>
+    <a href="daily.html" class="active">📖 必读</a>
+    <button class="theme-btn" onclick="toggleTheme()" id="themeBtn">🌙</button>
+  </nav>
+</header>
+
+<div class="container" id="app"><div style="text-align:center;padding:3rem;color:var(--muted)">加载中...</div></div>
+
+<script>
+function initTheme(){var t=localStorage.getItem('theme')||'light';document.documentElement.setAttribute('data-theme',t);document.getElementById('themeBtn').textContent=t==='dark'?'☀️':'🌙'}
+function toggleTheme(){var t=document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark';document.documentElement.setAttribute('data-theme',t);localStorage.setItem('theme',t);document.getElementById('themeBtn').textContent=t==='dark'?'☀️':'🌙'}
+initTheme();
+
+var DOMS={'it-security':{emoji:'🔐',name:'IT网络与数据安全'},'auto-security':{emoji:'🚗',name:'智能网联汽车安全'},'investment':{emoji:'📈',name:'投资之路'},'daily':{emoji:'📝',name:'日常记录'},'ai-learning':{emoji:'🤖',name:'AI学习'},'other':{emoji:'📦',name:'其他'}};
+var TYPES={entity:'实体',concept:'概念',comparison:'对比',query:'查询'};
+var today=new Date().toISOString().slice(0,10);
+
+function esc(s){return s.replace(/'/g,"\\'")}
+
+async function init(){
+  try{
+    var dr=await fetch('daily_read.json');var d=await dr.json();
+    render(d)
+  }catch(e){
+    document.getElementById('app').innerHTML='<div class="page-header"><h1>📖 每日必读</h1><p>今日尚未选文，凌晨自动生成</p></div>'
+  }
+}
+
+function render(d){
+  var stored=localStorage.getItem('daily_read_'+today);
+  var read=stored?JSON.parse(stored):[false,false];
+  var allDone=read[0]&&read[1];
+  var isToday=d.date===today;
+  var articles=isToday?d.articles:[];
+  
+  var html='<div class="page-header">';
+  html+='<div class="day-badge '+(allDone?'status-done':'status-pending')+'" style="background:'+(allDone?'var(--green-bg)':'var(--orange-bg)')+';color:'+(allDone?'var(--green)':'var(--orange)')+'">'+(allDone?'✅ 今日已完成':'⏳ '+today)+'</div>';
+  html+='<h1>📖 每日必读</h1>';
+  html+='<p>每天 2 篇精选，持续积累知识复利</p>';
+  html+='</div>';
+
+  // Today's articles
+  if(isToday&&articles.length>0){
+    html+='<div class="status-card '+(allDone?'status-done':'status-pending')+'">';
+    html+='<h2><span class="status-icon">'+(allDone?'✅':'📋')+'</span>'+(allDone?'今日任务完成！':'今日任务')+'</h2>';
+    articles.forEach(function(a,i){
+      html+='<div class="article-card'+(read[i]?' completed':'')+'" onclick="openArticle('+i+',\''+a.path+'\')">';
+      html+='<div class="num '+(read[i]?'num-done':'num-pending')+'">'+(read[i]?'✓':(i+1))+'</div>';
+      html+='<div class="article-body"><div class="article-title">'+a.title+'</div><div class="article-meta">'+(DOMS[a.domain]?DOMS[a.domain].emoji+' ':'')+TYPES[a.type]+'</div></div>';
+      html+='<div class="article-arrow">→</div></div>';
+    });
+    html+='<div style="margin-top:.8rem;font-size:.78rem;color:var(--muted)">'+(allDone?'🎉 明天继续加油！':'点击文章跳转阅读，读完后自动标记完成')+'</div>';
+    html+='</div>';
+  }else{
+    html+='<div class="status-card status-pending"><h2>📋 今日文章</h2><div style="color:var(--muted);font-size:.88rem">今日文章尚未生成，凌晨 00:00 自动更新</div></div>';
+  }
+
+  // History
+  var history=d.history||{};
+  var historyKeys=Object.keys(history).sort(function(a,b){
+    return (history[b].last_read||'').localeCompare(history[a].last_read||'')
+  });
+  if(historyKeys.length>0){
+    html+='<div class="history-section"><h3>📚 阅读历史</h3>';
+    historyKeys.slice(0,14).forEach(function(p){
+      var h=history[p];
+      var name=p.split('/').pop().replace('.md','').replace(/-/g,' ');
+      html+='<div class="history-item"><span class="history-date">'+(h.last_read||'未读')+'</span><span class="history-check">'+(h.last_read?'✅':'⬜')+'</span><span style="font-size:.78rem">'+name+'</span><span style="color:var(--muted);font-size:.68rem;margin-left:auto">'+h.times+'次</span></div>';
+    });
+    html+='</div>';
+  }
+
+  document.getElementById('app').innerHTML=html;
+}
+
+function openArticle(idx,path){
+  var stored=localStorage.getItem('daily_read_'+today);
+  var read=stored?JSON.parse(stored):[false,false];
+  read[idx]=true;localStorage.setItem('daily_read_'+today,JSON.stringify(read));
+  window.location.href='index.html?page='+encodeURIComponent(path);
+}
+</script>
+</body>
+</html>
