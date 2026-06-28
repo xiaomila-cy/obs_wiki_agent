@@ -1,154 +1,157 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-CN" data-theme="light">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>🌶️ 小米辣的个人知识库</title>
 <style>
-:root{
-  --bg:#f8f9fa; --surface:#fff; --text:#1a1a2e; --muted:#6b7280;
-  --accent:#f59e0b; --accent2:#3b82f6; --border:#e5e7eb; --shadow:0 1px 3px rgba(0,0,0,.06);
-  --card-radius:12px;
-}
+:root{--bg:#fafbfc;--surface:#fff;--text:#1a1a2e;--muted:#6b7280;--accent:#f59e0b;--blue:#3b82f6;--border:#e5e7eb;--hover:#f3f4f6;--shadow:0 1px 2px rgba(0,0,0,.04);--shadow-lg:0 4px 12px rgba(0,0,0,.06)}
+[data-theme="dark"]{--bg:#0f172a;--surface:#1e293b;--text:#e2e8f0;--muted:#94a3b8;--accent:#fbbf24;--blue:#60a5fa;--border:#334155;--hover:#1e293b;--shadow:0 1px 2px rgba(0,0,0,.3);--shadow-lg:0 4px 12px rgba(0,0,0,.4)}
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans SC",sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
-.header{background:var(--surface);border-bottom:1px solid var(--border);padding:1rem 2rem;display:flex;align-items:center;gap:.8rem;position:sticky;top:0;z-index:10}
-.header h1{font-size:1.15rem;font-weight:700;color:var(--text);display:flex;align-items:center;gap:.5rem}
-.header nav{display:flex;gap:1.5rem;margin-left:auto;font-size:.85rem}
-.header nav a{color:var(--muted);text-decoration:none;transition:color .15s}
-.header nav a:hover,.header nav a.active{color:var(--accent2)}
-.container{max-width:1060px;margin:0 auto;padding:2rem 1.5rem}
-.stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-bottom:2rem}
-.stat-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--card-radius);padding:1.2rem 1.4rem;box-shadow:var(--shadow)}
-.stat-card .num{font-size:1.8rem;font-weight:700;line-height:1.2}
-.stat-card .label{font-size:.8rem;color:var(--muted);margin-top:.2rem}
-.stat-card.accent{border-left:3px solid var(--accent)}
-.stat-card.accent .num{color:var(--accent)}
-.section-title{font-size:.85rem;font-weight:600;text-transform:uppercase;letter-spacing:.5px;color:var(--muted);margin-bottom:1rem}
-.domain-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.8rem;margin-bottom:2rem}
-.domain-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--card-radius);padding:1.3rem 1.2rem;text-decoration:none;color:inherit;transition:all .2s;box-shadow:var(--shadow);cursor:pointer;display:block}
-.domain-card:hover{transform:translateY(-2px);box-shadow:0 4px 12px rgba(0,0,0,.1);border-color:var(--accent2)}
-.domain-card .emoji{font-size:1.6rem;margin-bottom:.5rem}
-.domain-card .name{font-weight:600;font-size:.95rem;margin-bottom:.2rem}
-.domain-card .desc{font-size:.78rem;color:var(--muted);line-height:1.4}
-.domain-card .count{font-size:.8rem;color:var(--accent);margin-top:.6rem;font-weight:600}
-.detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:2rem}
-.detail-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--card-radius);padding:1.2rem 1.4rem;box-shadow:var(--shadow)}
-.detail-card h3{font-size:.75rem;text-transform:uppercase;letter-spacing:.5px;color:var(--muted);margin-bottom:.8rem}
-.bar{display:flex;align-items:center;gap:.6rem;margin:.35rem 0;font-size:.85rem}
-.bar .label{width:60px;color:var(--muted);flex-shrink:0}
-.bar .track{flex:1;height:6px;background:var(--border);border-radius:3px;overflow:hidden}
-.bar .fill{height:100%;border-radius:3px;transition:width .4s}
-.fill-entity{background:var(--accent2)}.fill-concept{background:#22c55e}.fill-comparison{background:var(--accent)}.fill-query{background:#a855f7}
-.bar .val{width:28px;text-align:right;font-weight:500;flex-shrink:0}
-.tag{display:inline-block;padding:.15em .55em;border-radius:4px;font-size:.75rem;background:#eff6ff;color:#2563eb;margin:.15rem}
-.recent-item{display:flex;align-items:center;gap:.6rem;padding:.4rem 0;border-bottom:1px solid var(--border);font-size:.84rem}
-.recent-item:last-child{border-bottom:none}
-.recent-date{font-size:.72rem;color:var(--muted);min-width:44px}
-.recent-badge{font-size:.65rem;padding:.1em .4em;border-radius:3px;min-width:38px;text-align:center;font-weight:600}
-.rb-entity{background:#eff6ff;color:#2563eb}.rb-concept{background:#f0fdf4;color:#16a34a}
-.rb-comparison{background:#fffbeb;color:#d97706}.rb-query{background:#faf5ff;color:#9333ea}
-.conf-row{display:flex;gap:1.5rem;align-items:center;flex-wrap:wrap;font-size:.85rem}
-.dot{width:8px;height:8px;border-radius:50%;display:inline-block;margin-right:4px}
-.dot-high{background:#22c55e}.dot-med{background:var(--accent)}.dot-low{background:#ef4444}
-.empty-state{text-align:center;padding:4rem 1rem;color:var(--muted)}
-.empty-state h2{font-size:1.2rem;color:var(--text);margin-bottom:.3rem}
-.footer{text-align:center;padding:2rem;font-size:.78rem;color:var(--muted);border-top:1px solid var(--border);margin-top:2rem}
-@media(max-width:768px){.stats-row,.domain-grid,.detail-grid{grid-template-columns:1fr}.header{padding:.8rem 1rem}}
+body{font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans SC",sans-serif;background:var(--bg);color:var(--text);line-height:1.6;transition:background .2s,color .2s}
+/* Header */
+.navbar{position:sticky;top:0;z-index:20;background:var(--surface);border-bottom:1px solid var(--border);padding:0 1.5rem;height:52px;display:flex;align-items:center;gap:1rem;backdrop-filter:blur(8px)}
+.navbar .logo{font-weight:700;font-size:1rem;color:var(--text);text-decoration:none;display:flex;align-items:center;gap:.4rem}
+.navbar nav{display:flex;gap:1.2rem;margin-left:auto;align-items:center;font-size:.84rem}
+.navbar nav a{color:var(--muted);text-decoration:none;transition:color .15s;padding:.2rem 0}
+.navbar nav a:hover,.navbar nav a.active{color:var(--blue)}
+/* Theme toggle */
+.theme-btn{background:none;border:1px solid var(--border);border-radius:6px;padding:.25rem .5rem;cursor:pointer;font-size:.85rem;color:var(--muted);transition:all .15s;line-height:1}
+.theme-btn:hover{background:var(--hover);color:var(--text)}
+/* Hero */
+.hero{text-align:center;padding:3rem 1.5rem 2rem;max-width:640px;margin:0 auto}
+.hero h1{font-size:1.8rem;font-weight:800;letter-spacing:-.5px;margin-bottom:.5rem}
+.hero h1 span{color:var(--accent)}
+.hero p{font-size:.95rem;color:var(--muted);margin-bottom:1.2rem}
+.hero-stats{display:flex;justify-content:center;gap:2rem;font-size:.84rem;color:var(--muted)}
+.hero-stats strong{color:var(--text);font-size:1.1rem}
+/* Container */
+.container{max-width:1000px;margin:0 auto;padding:0 1.5rem 2rem}
+/* Section title */
+.sec-title{font-size:.8rem;font-weight:600;text-transform:uppercase;letter-spacing:.8px;color:var(--muted);margin:1.8rem 0 .8rem}
+/* Domain cards */
+.domain-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:.7rem}
+.domain-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:1.1rem;text-decoration:none;color:inherit;transition:all .2s;box-shadow:var(--shadow)}
+.domain-card:hover{transform:translateY(-1px);box-shadow:var(--shadow-lg);border-color:var(--blue)}
+.domain-card .icon{font-size:1.4rem;margin-bottom:.4rem}
+.domain-card .name{font-weight:600;font-size:.88rem;margin-bottom:.15rem}
+.domain-card .desc{font-size:.74rem;color:var(--muted);line-height:1.4;margin-bottom:.5rem}
+.domain-card .count{font-size:.76rem;color:var(--accent);font-weight:600}
+/* Detail rows */
+.detail-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:.8rem;margin-bottom:.8rem}
+.detail-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:1rem 1.2rem;box-shadow:var(--shadow)}
+.detail-card h3{font-size:.72rem;text-transform:uppercase;letter-spacing:.5px;color:var(--muted);margin-bottom:.6rem}
+.bar{display:flex;align-items:center;gap:.5rem;margin:.3rem 0;font-size:.82rem}.bar .bl{width:50px;color:var(--muted);flex-shrink:0}.bar .bt{flex:1;height:5px;background:var(--border);border-radius:3px;overflow:hidden}.bar .bf{height:100%;border-radius:3px;transition:width .3s}.bar .bv{width:26px;text-align:right;font-weight:500;flex-shrink:0}
+.f-entity{background:var(--blue)}.f-concept{background:#22c55e}.f-comparison{background:var(--accent)}.f-query{background:#a855f7}
+.tag{display:inline-block;padding:.12em .5em;border-radius:4px;font-size:.73rem;background:#eff6ff;color:#2563eb;margin:.12rem}
+[data-theme="dark"] .tag{background:#1e3a5f;color:#7dd3fc}
+.recent-item{display:flex;align-items:center;gap:.5rem;padding:.35rem 0;border-bottom:1px solid var(--border);font-size:.82rem}.recent-item:last-child{border:none}
+.rd{font-size:.7rem;color:var(--muted);min-width:42px}
+.rb{font-size:.62rem;padding:.1em .35em;border-radius:3px;min-width:36px;text-align:center;font-weight:600}
+.rb-e{background:#eff6ff;color:#2563eb}.rb-c{background:#f0fdf4;color:#16a34a}.rb-x{background:#fffbeb;color:#d97706}.rb-q{background:#faf5ff;color:#9333ea}
+[data-theme="dark"] .rb-e{background:#1e3a5f;color:#7dd3fc}[data-theme="dark"] .rb-c{background:#14532d;color:#86efac}
+[data-theme="dark"] .rb-x{background:#3b2e00;color:#fcd34d}[data-theme="dark"] .rb-q{background:#3b0764;color:#c084fc}
+.empty{text-align:center;padding:3rem 1rem;color:var(--muted)}.empty h2{color:var(--text);margin-bottom:.3rem;font-size:1.1rem}
+.footer{text-align:center;padding:2rem;font-size:.76rem;color:var(--muted);border-top:1px solid var(--border);margin-top:3rem}
+@media(max-width:768px){.detail-row{grid-template-columns:1fr}.domain-grid{grid-template-columns:repeat(2,1fr)}.hero-stats{flex-wrap:wrap;gap:1rem}}
 </style>
 </head>
 <body>
 
-<div class="header">
-  <h1>🌶️ 小米辣的个人知识库</h1>
+<header class="navbar">
+  <a href="dashboard.html" class="logo">🌶️ 小米辣</a>
   <nav>
     <a href="dashboard.html" class="active">仪表盘</a>
     <a href="index.html?domain=it-security">文档</a>
+    <button class="theme-btn" onclick="toggleTheme()" id="themeBtn">🌙</button>
   </nav>
+</header>
+
+<div class="hero">
+  <h1>🌶️ <span>小米辣</span>的个人知识库</h1>
+  <p id="hero-sub">加载中...</p>
+  <div class="hero-stats" id="hero-stats"></div>
 </div>
 
-<div class="container" id="app"><div class="empty-state"><p>加载中...</p></div></div>
+<div class="container" id="app"><div class="empty"><p>加载中...</p></div></div>
+
+<div class="footer">持续积累的知识复利 · Powered by Hermes Agent</div>
 
 <script>
+// Theme
+function initTheme(){var t=localStorage.getItem('theme')||'light';document.documentElement.setAttribute('data-theme',t);document.getElementById('themeBtn').textContent=t==='dark'?'☀️':'🌙'}
+function toggleTheme(){var t=document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark';document.documentElement.setAttribute('data-theme',t);localStorage.setItem('theme',t);document.getElementById('themeBtn').textContent=t==='dark'?'☀️':'🌙'}
+initTheme();
+
+// Data
+var TYPES={entity:'实体',concept:'概念',comparison:'对比',query:'查询'};
+var TL={entity:'rb-e',concept:'rb-c',comparison:'rb-x',query:'rb-q'};
+
 async function init(){
   try{
-    var r=await fetch('stats.json');var s=await r.json();
-    var dr=await fetch('domains.json');var domains=await dr.json();
-    render(s,domains.domains)
+    var sr=await fetch('stats.json');var s=await sr.json();
+    var dr=await fetch('domains.json');var dm=await dr.json();
+    render(s,dm.domains)
   }catch(e){
-    document.getElementById('app').innerHTML='<div class="empty-state"><h2>📊 暂无数据</h2><p>等 Wiki 有页面就自动生成~</p></div>'
+    document.getElementById('app').innerHTML='<div class="empty"><h2>📊 暂无数据</h2><p>等 Wiki 有页面就会自动生成~</p></div>'
   }
 }
 
 function render(s,domains){
+  document.getElementById('hero-sub').textContent='持续积累，知识复利';
+  document.getElementById('hero-stats').innerHTML='<div>📄 <strong>'+s.total_pages+'</strong> 篇文档</div><div>📈 近7天 <strong>'+s.trend['7d']+'</strong> 篇更新</div><div>✅ <strong>'+s.confidence_count.high+'</strong> 篇高置信度</div>';
+
   if(s.total_pages===0){
-    document.getElementById('app').innerHTML='<div class="empty-state"><h2>🌱 知识库还是空的</h2><p style="color:var(--muted)">板块已就绪：IT安全 · 汽车安全 · 投资 · 日常 · AI</p><p style="margin-top:1rem;font-size:.85rem;color:var(--muted)">开始往里喂材料吧</p></div>';
-    return
+    document.getElementById('app').innerHTML='<div class="empty"><h2>🌱 知识库还是空的</h2><p>开始往里喂材料吧</p></div>';return
   }
+
   var maxType=Math.max(1,...Object.values(s.type_count));
+  var dmMap={};s.domains.forEach(function(d){dmMap[d.id]=d.count});
   var html='';
 
-  // 总览统计
-  html+='<div class="stats-row">';
-  html+='<div class="stat-card accent"><div class="num">'+s.total_pages+'</div><div class="label">📄 总页面</div></div>';
-  html+='<div class="stat-card"><div class="num" style="color:var(--accent2)">'+s.trend['7d']+'</div><div class="label">📈 近7天更新</div></div>';
-  html+='<div class="stat-card"><div class="num" style="color:#22c55e">'+s.confidence_count.high+'</div><div class="label">✅ 高置信度</div></div>';
-  html+='<div class="stat-card"><div class="num" style="color:'+(s.contested>0?'#ef4444':'var(--muted)')+'">'+s.contested+'</div><div class="label">⚠️ 争议条目</div></div>';
-  html+='</div>';
-
-  // 板块卡片
-  html+='<div class="section-title">📂 知识板块</div>';
-  html+='<div class="domain-grid">';
-  var domainMap={};
-  s.domains.forEach(function(d){domainMap[d.id]=d.count});
+  // Domain cards
+  html+='<div class="sec-title">📂 知识板块</div><div class="domain-grid">';
   domains.forEach(function(d){
-    var count=domainMap[d.id]||0;
-    html+='<a class="domain-card" href="index.html?domain='+d.id+'"><div class="emoji">'+d.emoji+'</div><div class="name">'+d.name+'</div><div class="desc">'+d.desc+'</div><div class="count">'+count+' 篇</div></a>';
+    html+='<a class="domain-card" href="index.html?domain='+d.id+'"><div class="icon">'+d.emoji+'</div><div class="name">'+d.name+'</div><div class="desc">'+d.desc+'</div><div class="count">'+(dmMap[d.id]||0)+' 篇</div></a>';
   });
   html+='</div>';
 
-  // 类型分布 + 标签云
-  html+='<div class="detail-grid">';
-  html+='<div class="detail-card"><h3>📂 按类型</h3>';
-  var types={entity:'实体',concept:'概念',comparison:'对比',query:'查询'};
-  var fills={entity:'fill-entity',concept:'fill-concept',comparison:'fill-comparison',query:'fill-query'};
-  Object.keys(types).forEach(function(t){
-    html+='<div class="bar"><span class="label">'+types[t]+'</span><div class="track"><div class="fill '+fills[t]+'" style="width:'+(s.type_count[t]/maxType*100)+'%"></div></div><span class="val">'+s.type_count[t]+'</span></div>';
+  // Detail row: types + tags
+  html+='<div class="sec-title">📊 数据总览</div><div class="detail-row">';
+  
+  // Type bars
+  html+='<div class="detail-card"><h3>按类型</h3>';
+  var ft={entity:'f-entity',concept:'f-concept',comparison:'f-comparison',query:'f-query'};
+  Object.keys(ft).forEach(function(t){
+    html+='<div class="bar"><span class="bl">'+TYPES[t]+'</span><div class="bt"><div class="bf '+ft[t]+'" style="width:'+(s.type_count[t]/maxType*100)+'%"></div></div><span class="bv">'+s.type_count[t]+'</span></div>';
   });
   html+='</div>';
-  
-  html+='<div class="detail-card"><h3>🏷️ 热门标签</h3>';
+
+  // Tag cloud
+  html+='<div class="detail-card"><h3>热门标签</h3>';
   s.top_tags.forEach(function(t){
-    var size=.72+t.count/maxType*.25;
-    html+='<span class="tag" style="font-size:'+size+'rem">'+t.name+' '+t.count+'</span>';
+    html+='<span class="tag" style="font-size:'+(.72+t.count/maxType*.22)+'rem">'+t.name+' '+t.count+'</span>';
   });
   html+='</div>';
-  html+='</div>';
 
-  // 最近更新 + 更新趋势
-  html+='<div class="detail-grid">';
-  html+='<div class="detail-card"><h3>📅 最近更新</h3>';
+  // Summary
+  html+='<div class="detail-card"><h3>更新趋势</h3>';
+  html+='<div class="bar"><span class="bl">30天</span><div class="bt"><div class="bf f-entity" style="width:100%"></div></div><span class="bv">'+s.trend['30d']+'</span></div>';
+  html+='<div class="bar"><span class="bl">14天</span><div class="bt"><div class="bf f-concept" style="width:'+(100*s.trend['14d']/Math.max(1,s.trend['30d']))+'%"></div></div><span class="bv">'+s.trend['14d']+'</span></div>';
+  html+='<div class="bar"><span class="bl">7天</span><div class="bt"><div class="bf f-comparison" style="width:'+(100*s.trend['7d']/Math.max(1,s.trend['30d']))+'%"></div></div><span class="bv">'+s.trend['7d']+'</span></div>';
+  html+='<div style="margin-top:.6rem;font-size:.8rem;color:var(--muted)">'+(s.trend['7d']>0?'🔥 持续更新中':s.trend['14d']>0?'📖 近期有更新':'💤 最近较安静')+'</div>';
+  html+='</div></div>';
+
+  // Recent
+  html+='<div class="sec-title">📅 最近更新</div><div class="detail-card">';
   s.recent.slice(0,8).forEach(function(p){
-    html+='<div class="recent-item"><span class="recent-date">'+(p.updated.slice(-5)||'-')+'</span><span class="recent-badge rb-'+p.type+'">'+p.type+'</span><span>'+p.title+'</span></div>';
+    html+='<div class="recent-item"><span class="rd">'+(p.updated.slice(-5)||'-')+'</span><span class="rb '+TL[p.type]+'">'+p.type+'</span><span>'+p.title+'</span></div>';
   });
   html+='</div>';
-  
-  html+='<div class="detail-card"><h3>📊 更新趋势</h3>';
-  html+='<div class="bar"><span class="label">30天</span><div class="track"><div class="fill fill-entity" style="width:100%"></div></div><span class="val">'+s.trend['30d']+'</span></div>';
-  html+='<div class="bar"><span class="label">14天</span><div class="track"><div class="fill fill-concept" style="width:'+(s.trend['14d']/Math.max(1,s.trend['30d'])*100)+'%"></div></div><span class="val">'+s.trend['14d']+'</span></div>';
-  html+='<div class="bar"><span class="label">7天</span><div class="track"><div class="fill fill-comparison" style="width:'+(s.trend['7d']/Math.max(1,s.trend['30d'])*100)+'%"></div></div><span class="val">'+s.trend['7d']+'</span></div>';
-  html+='<div style="margin-top:.8rem;font-size:.82rem;color:var(--muted)">'+(s.trend['7d']>0?'🔥 持续更新中':s.trend['14d']>0?'📖 近期有更新':'💤 最近较安静')+'</div>';
-  html+='</div>';
-  html+='</div>';
-
-  // 置信度
-  html+='<div class="detail-card" style="margin-bottom:2rem"><h3>🎯 置信度分布</h3><div class="conf-row"><div><span class="dot dot-high"></span>高：<strong>'+s.confidence_count.high+'</strong></div><div><span class="dot dot-med"></span>中：<strong>'+s.confidence_count.medium+'</strong></div><div><span class="dot dot-low"></span>低：<strong>'+s.confidence_count.low+'</strong></div>'+(s.contested>0?'<div>⚠️ 争议：<strong style="color:#ef4444">'+s.contested+'</strong></div>':'')+'</div></div>';
 
   document.getElementById('app').innerHTML=html;
 }
 
 init();
 </script>
-
-<div class="footer">小米辣 · 持续积累的知识复利</div>
 </body>
 </html>
