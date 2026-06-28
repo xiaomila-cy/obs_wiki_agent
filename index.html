@@ -104,8 +104,9 @@ initTheme();
 
 var allPages=[],subDomains={},currentDomain='',currentView='list';
 var DOMS={'it-security':{emoji:'🔐',name:'IT网络与数据安全'},'auto-security':{emoji:'🚗',name:'智能网联汽车安全'},'investment':{emoji:'📈',name:'投资之路'},'daily':{emoji:'📝',name:'日常记录'},'ai-learning':{emoji:'🤖',name:'AI学习'},'other':{emoji:'📦',name:'其他'}};
-var TYPES={entity:'实体',concept:'概念',comparison:'对比',query:'查询'};
-var BADGES={entity:'b-entity',concept:'b-concept',comparison:'b-comparison',query:'b-query'};
+var TYPES={}
+var BADGES={}
+var TYPE_COLORS={'制度':'b-entity','方案':'b-concept','报告':'b-comparison','案例':'b-query','标准':'b-entity'}
 
 function esc(s){return s.replace(/'/g,"\\'")}
 
@@ -174,7 +175,7 @@ function showList(){currentView='list';document.getElementById('tocPanel').class
     html+='<div class="sub"><div class="sub-head">'+name+'<span class="cnt">'+groups[sdId].length+'</span></div>';
     if(info&&info.desc)html+='<div style="font-size:.72rem;color:var(--muted);margin-bottom:.5rem">'+info.desc+'</div>';
     html+='<div class="card-grid">';
-    groups[sdId].forEach(function(p){html+='<div class="card" onclick="viewPage(\''+p.path+'\',\''+esc(p.title)+'\')"><div class="card-title">'+p.title+'</div><div class="card-meta"><span class="badge '+BADGES[p.type]+'">'+TYPES[p.type]+'</span> · '+p.updated+'</div><div class="card-tags">'+(p.tags||[]).slice(0,3).map(function(t){return '<span class="tag">'+t+'</span>'}).join('')+'</div></div>'});
+    groups[sdId].forEach(function(p){var bc=TYPE_COLORS[p.type]||'b-entity';html+='<div class="card" onclick="viewPage(\''+p.path+'\',\''+esc(p.title)+'\')"><div class="card-title">'+p.title+'</div><div class="card-meta"><span class="badge '+bc+'">'+p.type+'</span> · '+p.updated+'</div><div class="card-tags">'+(p.tags||[]).slice(0,3).map(function(t){return '<span class="tag">'+t+'</span>'}).join('')+'</div></div>'});
     html+='</div></div>';
   });
   document.getElementById('content').innerHTML=html
@@ -187,7 +188,7 @@ function filterBySub(domain,sub){currentDomain=domain;currentView='list';
   var d=DOMS[domain];var info=null;subDomains.forEach(function(s){if(s.id===sub)info=s});
   var html='<div class="breadcrumb"><a href="dashboard.html">仪表盘</a> / <a href="#" onclick="showList()">'+d.name+'</a> / '+(info?info.name:sub)+'</div>';
   html+='<div class="card-grid">';
-  pages.forEach(function(p){html+='<div class="card" onclick="viewPage(\''+p.path+'\',\''+esc(p.title)+'\')"><div class="card-title">'+p.title+'</div><div class="card-meta"><span class="badge '+BADGES[p.type]+'">'+TYPES[p.type]+'</span> · '+p.updated+'</div><div class="card-tags">'+(p.tags||[]).slice(0,3).map(function(t){return '<span class="tag">'+t+'</span>'}).join('')+'</div></div>'});
+  pages.forEach(function(p){html+='<div class="card" onclick="viewPage(\''+p.path+'\',\''+esc(p.title)+'\')"><div class="card-title">'+p.title+'</div><div class="card-meta"><span class="badge '+TYPE_COLORS[p.type]+'">'+p.type+'</span> · '+p.updated+'</div><div class="card-tags">'+(p.tags||[]).slice(0,3).map(function(t){return '<span class="tag">'+t+'</span>'}).join('')+'</div></div>'});
   html+='</div>';
   document.getElementById('content').innerHTML=html
 }
@@ -200,7 +201,7 @@ function showTagFilter(tag,domain){
   var html='<div class="breadcrumb"><a href="dashboard.html">仪表盘</a> / '+d.name+' / 🏷️ '+tag+'</div>';
   html+='<div style="font-size:.78rem;color:var(--muted);margin-bottom:1rem">标签筛选：<strong>'+tag+'</strong> — 共 <strong>'+pages.length+'</strong> 篇</div>';
   html+='<div class="card-grid">';
-  pages.forEach(function(p){html+='<div class="card" onclick="viewPage(\''+p.path+'\',\''+esc(p.title)+'\')"><div class="card-title">'+p.title+'</div><div class="card-meta"><span class="badge '+BADGES[p.type]+'">'+TYPES[p.type]+'</span> · '+p.updated+'</div><div class="card-tags">'+(p.tags||[]).slice(0,3).map(function(t){return '<span class="tag">'+t+'</span>'}).join('')+'</div></div>'});
+  pages.forEach(function(p){html+='<div class="card" onclick="viewPage(\''+p.path+'\',\''+esc(p.title)+'\')"><div class="card-title">'+p.title+'</div><div class="card-meta"><span class="badge '+TYPE_COLORS[p.type]+'">'+p.type+'</span> · '+p.updated+'</div><div class="card-tags">'+(p.tags||[]).slice(0,3).map(function(t){return '<span class="tag">'+t+'</span>'}).join('')+'</div></div>'});
   html+='</div>';
   document.getElementById('content').innerHTML=html
 }
@@ -244,7 +245,7 @@ function doSearch(){
   var matches=allPages.filter(function(p){return p.title.toLowerCase().indexOf(q)>=0||(p.tags||[]).some(function(t){return t.indexOf(q)>=0})}).slice(0,8);
   if(matches.length===0){box.innerHTML='<div style="padding:.5rem .8rem;font-size:.78rem;color:var(--muted)">无匹配结果</div>';box.classList.add('show');return}
   var h='';
-  matches.forEach(function(p){h+='<a href="#" onclick="viewPage(\''+p.path+'\',\''+esc(p.title)+'\');document.getElementById(\'searchResults\').classList.remove(\'show\');document.getElementById(\'searchInput\').value=\'\'"><div class="s-title">'+p.title+'</div><div class="s-meta">'+TYPES[p.type]+' · '+p.updated+'</div></a>'});
+  matches.forEach(function(p){h+='<a href="#" onclick="viewPage(\''+p.path+'\',\''+esc(p.title)+'\');document.getElementById(\'searchResults\').classList.remove(\'show\');document.getElementById(\'searchInput\').value=\'\'"><div class="s-title">'+p.title+'</div><div class="s-meta">'+p.type+' · '+p.updated+'</div></a>'});
   box.innerHTML=h;box.classList.add('show')
 }
 

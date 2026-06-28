@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-06-28 16:12:52",
+  "generated_at": "2026-06-28 16:23:47",
   "total_pages": 24,
   "type_count": {
-    "entity": 13,
-    "concept": 11,
+    "entity": 0,
+    "concept": 0,
     "comparison": 0,
     "query": 0
   },
@@ -126,7 +126,7 @@
   "recent": [
     {
       "title": "APP安全管理制度",
-      "type": "entity",
+      "type": "制度",
       "path": "entities/app安全管理制度.md",
       "domain": "it-security",
       "tags": [
@@ -137,7 +137,7 @@
     },
     {
       "title": "dlp采购需求清单",
-      "type": "entity",
+      "type": "方案",
       "path": "entities/dlp采购需求清单.md",
       "domain": "it-security",
       "tags": [
@@ -149,7 +149,7 @@
     },
     {
       "title": "信息安全红线制度",
-      "type": "entity",
+      "type": "制度",
       "path": "entities/信息安全红线制度.md",
       "domain": "it-security",
       "tags": [
@@ -160,7 +160,7 @@
     },
     {
       "title": "信息安全违规问责管理办法",
-      "type": "entity",
+      "type": "制度",
       "path": "entities/信息安全违规问责管理办法.md",
       "domain": "it-security",
       "tags": [
@@ -171,7 +171,7 @@
     },
     {
       "title": "信息科技外包风险管理评估报告",
-      "type": "entity",
+      "type": "报告",
       "path": "entities/信息科技外包风险管理评估报告.md",
       "domain": "it-security",
       "tags": [
@@ -183,7 +183,7 @@
     },
     {
       "title": "信息科技风险管理报告",
-      "type": "entity",
+      "type": "报告",
       "path": "entities/信息科技风险管理报告.md",
       "domain": "it-security",
       "tags": [
@@ -194,7 +194,7 @@
     },
     {
       "title": "办公云桌面IT安全管理规范",
-      "type": "entity",
+      "type": "制度",
       "path": "entities/办公云桌面it安全管理规范.md",
       "domain": "it-security",
       "tags": [
@@ -206,7 +206,7 @@
     },
     {
       "title": "办公终端产品选型需求清单",
-      "type": "entity",
+      "type": "方案",
       "path": "entities/办公终端产品选型需求清单.md",
       "domain": "it-security",
       "tags": [
@@ -217,7 +217,7 @@
     },
     {
       "title": "数据安全管理制度",
-      "type": "entity",
+      "type": "制度",
       "path": "entities/数据安全管理制度.md",
       "domain": "it-security",
       "tags": [
@@ -228,7 +228,7 @@
     },
     {
       "title": "标准规范与制度体系",
-      "type": "entity",
+      "type": "标准",
       "path": "entities/标准规范与制度体系.md",
       "domain": "it-security",
       "tags": [

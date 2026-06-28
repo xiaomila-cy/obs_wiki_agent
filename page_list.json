@@ -1,7 +1,7 @@
 [
   {
     "title": "APP安全管理制度",
-    "type": "entity",
+    "type": "制度",
     "path": "entities/app安全管理制度.md",
     "domain": "it-security",
     "sub_domain": "app-security",
@@ -13,7 +13,7 @@
   },
   {
     "title": "dlp采购需求清单",
-    "type": "entity",
+    "type": "方案",
     "path": "entities/dlp采购需求清单.md",
     "domain": "it-security",
     "sub_domain": "infra-endpoint",
@@ -26,7 +26,7 @@
   },
   {
     "title": "信息安全红线制度",
-    "type": "entity",
+    "type": "制度",
     "path": "entities/信息安全红线制度.md",
     "domain": "it-security",
     "sub_domain": "governance",
@@ -38,7 +38,7 @@
   },
   {
     "title": "信息安全违规问责管理办法",
-    "type": "entity",
+    "type": "制度",
     "path": "entities/信息安全违规问责管理办法.md",
     "domain": "it-security",
     "sub_domain": "governance",
@@ -50,7 +50,7 @@
   },
   {
     "title": "信息科技外包风险管理评估报告",
-    "type": "entity",
+    "type": "报告",
     "path": "entities/信息科技外包风险管理评估报告.md",
     "domain": "it-security",
     "sub_domain": "reports",
@@ -63,7 +63,7 @@
   },
   {
     "title": "信息科技风险管理报告",
-    "type": "entity",
+    "type": "报告",
     "path": "entities/信息科技风险管理报告.md",
     "domain": "it-security",
     "sub_domain": "reports",
@@ -75,7 +75,7 @@
   },
   {
     "title": "办公云桌面IT安全管理规范",
-    "type": "entity",
+    "type": "制度",
     "path": "entities/办公云桌面it安全管理规范.md",
     "domain": "it-security",
     "sub_domain": "infra-endpoint",
@@ -88,7 +88,7 @@
   },
   {
     "title": "办公终端产品选型需求清单",
-    "type": "entity",
+    "type": "方案",
     "path": "entities/办公终端产品选型需求清单.md",
     "domain": "it-security",
     "sub_domain": "infra-endpoint",
@@ -100,7 +100,7 @@
   },
   {
     "title": "数据安全管理制度",
-    "type": "entity",
+    "type": "制度",
     "path": "entities/数据安全管理制度.md",
     "domain": "it-security",
     "sub_domain": "data-security",
@@ -112,7 +112,7 @@
   },
   {
     "title": "标准规范与制度体系",
-    "type": "entity",
+    "type": "标准",
     "path": "entities/标准规范与制度体系.md",
     "domain": "it-security",
     "sub_domain": "standards",
@@ -125,7 +125,7 @@
   },
   {
     "title": "漏洞问责管理规范",
-    "type": "entity",
+    "type": "制度",
     "path": "entities/漏洞问责管理规范.md",
     "domain": "it-security",
     "sub_domain": "secops",
@@ -138,7 +138,7 @@
   },
   {
     "title": "社会工程学攻击违规处罚实施规范",
-    "type": "entity",
+    "type": "制度",
     "path": "entities/社会工程学攻击违规处罚实施规范.md",
     "domain": "it-security",
     "sub_domain": "personnel",
@@ -150,7 +150,7 @@
   },
   {
     "title": "网络安全事件管理办法",
-    "type": "entity",
+    "type": "制度",
     "path": "entities/网络安全事件管理办法.md",
     "domain": "it-security",
     "sub_domain": "secops",
@@ -162,7 +162,7 @@
   },
   {
     "title": "互联网SRC运营方案及成效",
-    "type": "concept",
+    "type": "方案",
     "path": "concepts/互联网src运营方案及成效.md",
     "domain": "it-security",
     "sub_domain": "secops",
@@ -175,7 +175,7 @@
   },
   {
     "title": "信息安全周报",
-    "type": "concept",
+    "type": "报告",
     "path": "concepts/信息安全周报.md",
     "domain": "it-security",
     "sub_domain": "secops",
@@ -188,7 +188,7 @@
   },
   {
     "title": "信息科技外包",
-    "type": "concept",
+    "type": "制度",
     "path": "concepts/信息科技外包.md",
     "domain": "it-security",
     "sub_domain": "supply-chain",
@@ -200,7 +200,7 @@
   },
   {
     "title": "合作方与供应链管理",
-    "type": "concept",
+    "type": "制度",
     "path": "concepts/合作方与供应链管理.md",
     "domain": "it-security",
     "sub_domain": "supply-chain",
@@ -212,7 +212,7 @@
   },
   {
     "title": "安全架构基本法",
-    "type": "concept",
+    "type": "制度",
     "path": "concepts/安全架构基本法.md",
     "domain": "it-security",
     "sub_domain": "governance",
@@ -225,7 +225,7 @@
   },
   {
     "title": "护网准备工作",
-    "type": "concept",
+    "type": "方案",
     "path": "concepts/护网准备工作.md",
     "domain": "it-security",
     "sub_domain": "secops",
@@ -238,7 +238,7 @@
   },
   {
     "title": "数据分类分级管理实施细则",
-    "type": "concept",
+    "type": "制度",
     "path": "concepts/数据分类分级管理实施细则.md",
     "domain": "it-security",
     "sub_domain": "data-security",
@@ -250,7 +250,7 @@
   },
   {
     "title": "数据安全",
-    "type": "concept",
+    "type": "制度",
     "path": "concepts/数据安全.md",
     "domain": "it-security",
     "sub_domain": "data-security",
@@ -262,7 +262,7 @@
   },
   {
     "title": "社工钓鱼案例",
-    "type": "concept",
+    "type": "案例",
     "path": "concepts/社工钓鱼案例.md",
     "domain": "it-security",
     "sub_domain": "personnel",
@@ -274,7 +274,7 @@
   },
   {
     "title": "终端安全",
-    "type": "concept",
+    "type": "制度",
     "path": "concepts/终端安全.md",
     "domain": "it-security",
     "sub_domain": "infra-endpoint",
@@ -286,7 +286,7 @@
   },
   {
     "title": "网络攻防",
-    "type": "concept",
+    "type": "方案",
     "path": "concepts/网络攻防.md",
     "domain": "it-security",
     "sub_domain": "secops",

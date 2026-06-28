@@ -103,7 +103,8 @@ function toggleTheme(){var t=document.documentElement.getAttribute('data-theme')
 initTheme();
 
 // Data
-var TYPES={entity:'实体',concept:'概念',comparison:'对比',query:'查询'};
+var TYPES={}
+var TYPE_COLORS={'制度':'#2563eb','方案':'#16a34a','报告':'#d97706','案例':'#9333ea','标准':'#0891b2','对比':'#6366f1'};
 var TL={entity:'rb-e',concept:'rb-c',comparison:'rb-x',query:'rb-q'};
 var DOMS_LOOKUP={'it-security':{emoji:'🔐',name:'IT网络与数据安全'},'auto-security':{emoji:'🚗',name:'智能网联汽车安全'},'investment':{emoji:'📈',name:'投资之路'},'daily':{emoji:'📝',name:'日常记录'},'ai-learning':{emoji:'🤖',name:'AI学习'},'other':{emoji:'📦',name:'其他'}};
 var allTags=[],allPages=[];
@@ -141,11 +142,13 @@ function render(s,domains){
   // Detail row: types + tags
   html+='<div class="sec-title">📊 数据总览</div><div class="detail-row">';
   
-  // Type bars
+  // Type bars — 动态使用实际类型
   html+='<div class="detail-card"><h3>按类型</h3>';
-  var ft={entity:'f-entity',concept:'f-concept',comparison:'f-comparison',query:'f-query'};
-  Object.keys(ft).forEach(function(t){
-    html+='<div class="bar"><span class="bl">'+TYPES[t]+'</span><div class="bt"><div class="bf '+ft[t]+'" style="width:'+(s.type_count[t]/maxType*100)+'%"></div></div><span class="bv">'+s.type_count[t]+'</span></div>';
+  var typeColors = {'制度':'f-entity','方案':'f-concept','报告':'f-comparison','案例':'f-query','标准':'f-entity'};
+  var types = s.type_count || {};
+  Object.keys(types).sort(function(a,b){return types[b]-types[a]}).forEach(function(t){
+    var color = typeColors[t] || 'f-entity';
+    html+='<div class="bar"><span class="bl">'+t+'</span><div class="bt"><div class="bf '+color+'" style="width:'+(types[t]/Math.max(1,Math.max(...Object.values(types)))*100)+'%"></div></div><span class="bv">'+types[t]+'</span></div>';
   });
   html+='</div>';
 
@@ -186,7 +189,7 @@ function render(s,domains){
   // Recent — clickable
   html+='<div class="sec-title">📅 最近更新</div><div class="detail-card">';
   s.recent.slice(0,8).forEach(function(p){
-    html+='<div class="recent-item" style="cursor:pointer" onclick="location.href=\'index.html?page='+encodeURIComponent(p.path)+'\'"><span class="rd">'+(p.updated.slice(-5)||'-')+'</span><span class="rb '+TL[p.type]+'">'+p.type+'</span><span>'+p.title+'</span></div>';
+    html+='<div class="recent-item" style="cursor:pointer" onclick="location.href=\'index.html?page='+encodeURIComponent(p.path)+'\'"><span class="rd">'+(p.updated.slice(-5)||'-')+'</span><span class="rb '+TYPE_COLORS[p.type]||'rb-e'+'">'+p.type+'</span><span>'+p.title+'</span></div>';
   });
   html+='</div>';
 
