@@ -11,26 +11,28 @@ body{font-family:-apple-system,"Noto Sans SC",sans-serif;background:var(--bg);co
 .header a{color:var(--accent2);text-decoration:none;font-size:.85rem}
 .header h1{font-size:1.15rem;color:var(--accent);flex:1;margin:0}
 .container{max-width:900px;margin:0 auto;padding:1.2rem}
-.sub-section{margin-bottom:1.5rem}
-.sub-heading{font-size:.95rem;font-weight:600;margin-bottom:.5rem;padding-bottom:.3rem;border-bottom:1px solid var(--border)}
-.sub-heading .count{font-weight:400;color:var(--muted);font-size:.78rem;margin-left:.4rem}
-.card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:.8rem 1rem;margin-bottom:.4rem}
+.sub-section{margin-bottom:1.8rem}
+.sub-heading{font-size:.95rem;font-weight:600;margin-bottom:.5rem;padding-bottom:.3rem;border-bottom:1px solid var(--border);display:flex;align-items:baseline;gap:.3rem}
+.sub-count{font-weight:400;color:var(--muted);font-size:.76rem}
+.sub-desc{font-size:.72rem;color:var(--muted);margin-bottom:.5rem}
+.card-grid{display:grid;grid-template-columns:1fr 1fr;gap:.5rem}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:.8rem 1rem}
 .card:hover{border-color:var(--accent2);cursor:pointer}
-.card-row{display:flex;align-items:flex-start;gap:.7rem}
-.card-body{flex:1}
-.card-title{font-weight:600;font-size:.88rem}.card-meta{font-size:.7rem;color:var(--muted);margin-top:.1rem}
-.tag{display:inline-block;padding:.1em .45em;border-radius:4px;font-size:.68rem;background:#1e3a5f;color:#7dd3fc;margin:.1rem}
+.card-title{font-weight:600;font-size:.88rem}
+.card-meta{font-size:.7rem;color:var(--muted);margin-top:.15rem}
+.card-tags{margin-top:.25rem}
+.tag{display:inline-block;padding:.1em .45em;border-radius:4px;font-size:.66rem;background:#1e3a5f;color:#7dd3fc;margin:.1rem}
 .badge{padding:.1em .4em;border-radius:4px;font-size:.65rem;font-weight:600}
 .b-entity{background:#1e3a5f;color:#7dd3fc}.b-concept{background:#14532d;color:#86efac}
 .md-view{line-height:1.8;padding-bottom:2rem}
-.md-view h1{font-size:1.25rem;margin:1rem 0}.md-view h2{font-size:1.05rem;margin:1rem 0 .4rem;border-bottom:1px solid var(--border);padding-bottom:.2rem}
+.md-view h1{font-size:1.25rem;margin:1rem 0}.md-view h2{font-size:1.05rem;margin:1.2rem 0 .4rem;border-bottom:1px solid var(--border);padding-bottom:.2rem}
+.md-view h3{font-size:.95rem;margin:.8rem 0 .3rem}
 .md-view p{margin:.5rem 0}.md-view ul,.md-view ol{margin:.4rem 0;padding-left:1.5rem}.md-view li{margin:.2rem 0}
 .md-view code{background:var(--border);padding:.12em .35em;border-radius:3px;font-size:.83em}
 .md-view pre{background:#0f172a;padding:.8rem;border-radius:6px;overflow-x:auto;margin:.8rem 0;border:1px solid var(--border);font-size:.8rem}
-.md-view pre code{background:none;padding:0}
 .md-view blockquote{border-left:3px solid var(--accent2);padding:.3rem .8rem;margin:.6rem 0;color:var(--muted)}
 .empty{text-align:center;padding:3rem 1rem;color:var(--muted)}.empty h3{font-size:1rem;color:var(--text)}
-@media(max-width:768px){.header{padding:.7rem}.container{padding:.7rem}}
+@media(max-width:768px){.card-grid{grid-template-columns:1fr}.header{padding:.7rem}.container{padding:.7rem}}
 </style>
 </head>
 <body>
@@ -61,7 +63,6 @@ async function init(){
   if(!currentDomain){location.href='dashboard.html';return}
   var d=DOMAINS[currentDomain]||{emoji:'📂',name:currentDomain};
   document.getElementById('htitle').textContent=d.emoji+' '+d.name;
-
   try{
     var r1=await fetch('page_list.json');allPages=await r1.json();
     try{var r2=await fetch('sub_domains.json');var sd=await r2.json();subDomains=sd.sub_domains[currentDomain]||[]}catch(e){}
@@ -69,9 +70,7 @@ async function init(){
   showList()
 }
 
-function filterPages(){
-  return allPages.filter(function(p){return p.domain===currentDomain})
-}
+function filterPages(){return allPages.filter(function(p){return p.domain===currentDomain})}
 
 function showList(){
   document.getElementById('backBtn').style.display='none';
@@ -80,22 +79,12 @@ function showList(){
     document.getElementById('content').innerHTML='<div class="empty"><h3>📭 暂无文档</h3><p style="margin-top:1rem;font-size:.85rem"><a href="dashboard.html" style="color:var(--accent2)">← 返回仪表盘</a></p></div>';
     return
   }
-
-  // Group by sub_domain
   var groups={};
-  pages.forEach(function(p){
-    var sd=p.sub_domain||'other';
-    if(!groups[sd])groups[sd]=[];
-    groups[sd].push(p)
-  });
-
+  pages.forEach(function(p){var sd=p.sub_domain||'other';if(!groups[sd])groups[sd]=[];groups[sd].push(p)});
   var html='<div style="font-size:.82rem;color:var(--muted);margin-bottom:1rem">共 <strong>'+pages.length+'</strong> 篇，分 '+Object.keys(groups).length+' 个板块</div>';
-
-  // Render in defined order
+  
   var order=subDomains.map(function(s){return s.id});
-  if(!groups['other'])order.push('other');
-  else order=order.filter(function(id){return id!=='other'});
-  // Add any groups not in order
+  if(order.indexOf('other')<0)order.push('other');
   Object.keys(groups).forEach(function(k){if(order.indexOf(k)<0)order.push(k)});
 
   order.forEach(function(sdId){
@@ -103,24 +92,18 @@ function showList(){
     var info=null;
     subDomains.forEach(function(s){if(s.id===sdId)info=s});
     var name=info?info.emoji+' '+info.name:sdId;
-    var desc=info?info.desc:'';
-
     html+='<div class="sub-section">';
-    html+='<div class="sub-heading">'+name+'<span class="count">'+groups[sdId].length+' 篇</span></div>';
-    if(desc)html+='<div style="font-size:.72rem;color:var(--muted);margin-bottom:.4rem">'+desc+'</div>';
-
+    html+='<div class="sub-heading">'+name+'<span class="sub-count">'+groups[sdId].length+' 篇</span></div>';
+    if(info&&info.desc)html+='<div class="sub-desc">'+info.desc+'</div>';
+    html+='<div class="card-grid">';
     groups[sdId].forEach(function(p){
       html+='<div class="card" onclick="viewPage(\''+p.path+'\',\''+p.title.replace(/'/g,"\\'")+'\')">'+
-        '<div class="card-row">'+
-          '<div class="card-body">'+
-            '<div class="card-title">'+p.title+'</div>'+
-            '<div class="card-meta">'+
-              '<span class="badge b-'+p.type+'">'+TYPES[p.type]+'</span> · '+p.updated+
-            '</div>'+
-            '<div style="margin-top:.2rem">'+(p.tags||[]).slice(0,4).map(function(t){return '<span class="tag">'+t+'</span>'}).join('')+'</div>'+
-          '</div></div></div>'
+        '<div class="card-title">'+p.title+'</div>'+
+        '<div class="card-meta"><span class="badge b-'+p.type+'">'+TYPES[p.type]+'</span> · '+p.updated+'</div>'+
+        '<div class="card-tags">'+(p.tags||[]).slice(0,4).map(function(t){return '<span class="tag">'+t+'</span>'}).join('')+'</div>'+
+      '</div>';
     });
-    html+='</div>'
+    html+='</div></div>';
   });
   document.getElementById('content').innerHTML=html
 }
