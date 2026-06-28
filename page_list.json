@@ -4,6 +4,7 @@
     "type": "concept",
     "path": "entities/app-security-management.md",
     "domain": "it-security",
+    "sub_domain": "app-security",
     "tags": [
       "standard",
       "app-security"
@@ -15,6 +16,7 @@
     "type": "concept",
     "path": "entities/data-classification-implementation.md",
     "domain": "it-security",
+    "sub_domain": "data-security",
     "tags": [
       "standard",
       "data-security"
@@ -26,6 +28,7 @@
     "type": "concept",
     "path": "entities/data-security-management-policy.md",
     "domain": "it-security",
+    "sub_domain": "data-security",
     "tags": [
       "standard",
       "data-security"
@@ -37,6 +40,7 @@
     "type": "concept",
     "path": "entities/infosec-redline-policy.md",
     "domain": "it-security",
+    "sub_domain": "governance",
     "tags": [
       "standard",
       "governance"
@@ -48,6 +52,7 @@
     "type": "concept",
     "path": "entities/infosec-violation-accountability.md",
     "domain": "it-security",
+    "sub_domain": "governance",
     "tags": [
       "standard",
       "governance"
@@ -59,6 +64,7 @@
     "type": "concept",
     "path": "entities/network-incident-management.md",
     "domain": "it-security",
+    "sub_domain": "secops",
     "tags": [
       "standard",
       "incident-response"
@@ -70,6 +76,7 @@
     "type": "concept",
     "path": "entities/office-cloud-desktop-security.md",
     "domain": "it-security",
+    "sub_domain": "infra-endpoint",
     "tags": [
       "standard",
       "endpoint",
@@ -82,6 +89,7 @@
     "type": "concept",
     "path": "entities/security-architecture-basics.md",
     "domain": "it-security",
+    "sub_domain": "governance",
     "tags": [
       "standard",
       "architecture"
@@ -93,6 +101,7 @@
     "type": "concept",
     "path": "entities/social-engineering-penalty.md",
     "domain": "it-security",
+    "sub_domain": "personnel",
     "tags": [
       "standard",
       "social-engineering"
@@ -104,6 +113,7 @@
     "type": "concept",
     "path": "entities/vulnerability-accountability.md",
     "domain": "it-security",
+    "sub_domain": "secops",
     "tags": [
       "standard",
       "vulnerability"
@@ -115,6 +125,7 @@
     "type": "concept",
     "path": "concepts/data-security-responsibility.md",
     "domain": "it-security",
+    "sub_domain": "data-security",
     "tags": [
       "governance",
       "data-security",
@@ -127,6 +138,7 @@
     "type": "concept",
     "path": "concepts/hw-defense-plan.md",
     "domain": "it-security",
+    "sub_domain": "secops",
     "tags": [
       "hw",
       "incident-response",
@@ -140,6 +152,7 @@
     "type": "concept",
     "path": "concepts/security-standards-catalog.md",
     "domain": "it-security",
+    "sub_domain": "standards",
     "tags": [
       "standard",
       "regulation",
@@ -153,6 +166,7 @@
     "type": "concept",
     "path": "concepts/supply-chain-security.md",
     "domain": "it-security",
+    "sub_domain": "supply-chain",
     "tags": [
       "supply-chain",
       "risk-management",
@@ -165,6 +179,7 @@
     "type": "concept",
     "path": "concepts/usb-endpoint-security.md",
     "domain": "it-security",
+    "sub_domain": "infra-endpoint",
     "tags": [
       "endpoint",
       "dlp",

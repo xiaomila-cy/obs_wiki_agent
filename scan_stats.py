@@ -141,6 +141,13 @@ if __name__ == "__main__":
         json.dump(stats, f, ensure_ascii=False, indent=2)
     
     # Also output page list for domain filtering
+    # Load sub_domain mapping
+    sub_map = {}
+    sub_conf = os.path.join(WIKI, "sub_domains.json")
+    if os.path.exists(sub_conf):
+        with open(sub_conf) as f:
+            sub_map = json.load(f).get("mapping", {})
+    
     pages_list = []
     for d in PAGE_DIRS:
         dirpath = os.path.join(WIKI, d)
@@ -153,11 +160,13 @@ if __name__ == "__main__":
             with open(fpath, 'r') as f:
                 fm = parse_frontmatter(f.read())
             domain = classify_domain(fm.get("tags", []), fm.get("domain", ""))
+            rel_path = f"{d}/{fname}"
             pages_list.append({
                 "title": fm.get("title", fname.replace('.md', '').replace('-', ' ').title()),
                 "type": fm.get("type", d.rstrip('s')),
-                "path": f"{d}/{fname}",
+                "path": rel_path,
                 "domain": domain,
+                "sub_domain": sub_map.get(rel_path, ""),
                 "tags": fm.get("tags", [])[:5],
                 "updated": fm.get("updated", ""),
             })

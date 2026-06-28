@@ -1,0 +1,31 @@
+{
+  "sub_domains": {
+    "it-security": [
+      {"id": "governance", "name": "安全治理与制度", "emoji": "📋", "desc": "红线、问责、架构等顶层制度"},
+      {"id": "data-security", "name": "数据安全", "emoji": "🔒", "desc": "定责、分类分级、管理制度"},
+      {"id": "infra-endpoint", "name": "基础设施与终端安全", "emoji": "🖥️", "desc": "云桌面、USB、网络接入"},
+      {"id": "app-security", "name": "应用安全", "emoji": "📱", "desc": "APP安全、SDL"},
+      {"id": "secops", "name": "安全运营与应急", "emoji": "🛡️", "desc": "护网、事件管理、漏洞治理"},
+      {"id": "supply-chain", "name": "供应链与第三方", "emoji": "🔗", "desc": "合作方准入、供应链管控"},
+      {"id": "personnel", "name": "人员安全", "emoji": "👤", "desc": "社工防范、意识培训"},
+      {"id": "standards", "name": "标准规范", "emoji": "📚", "desc": "国标、行业标准目录"}
+    ]
+  },
+  "mapping": {
+    "concepts/data-security-responsibility.md": "data-security",
+    "concepts/hw-defense-plan.md": "secops",
+    "concepts/usb-endpoint-security.md": "infra-endpoint",
+    "concepts/supply-chain-security.md": "supply-chain",
+    "concepts/security-standards-catalog.md": "standards",
+    "entities/office-cloud-desktop-security.md": "infra-endpoint",
+    "entities/infosec-violation-accountability.md": "governance",
+    "entities/vulnerability-accountability.md": "secops",
+    "entities/data-security-management-policy.md": "data-security",
+    "entities/data-classification-implementation.md": "data-security",
+    "entities/app-security-management.md": "app-security",
+    "entities/network-incident-management.md": "secops",
+    "entities/social-engineering-penalty.md": "personnel",
+    "entities/infosec-redline-policy.md": "governance",
+    "entities/security-architecture-basics.md": "governance"
+  }
+}
