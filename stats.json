@@ -1,104 +1,16 @@
 {
-  "generated_at": "2026-06-28 15:49:27",
-  "total_pages": 15,
+  "generated_at": "2026-06-28 15:54:24",
+  "total_pages": 24,
   "type_count": {
-    "entity": 0,
-    "concept": 15,
+    "entity": 13,
+    "concept": 11,
     "comparison": 0,
     "query": 0
   },
   "top_tags": [
     {
       "name": "制度",
-      "count": 10
-    },
-    {
-      "name": "数据安全",
-      "count": 3
-    },
-    {
-      "name": "治理",
-      "count": 3
-    },
-    {
-      "name": "应急响应",
-      "count": 2
-    },
-    {
-      "name": "终端安全",
-      "count": 2
-    },
-    {
-      "name": "合规",
-      "count": 2
-    },
-    {
-      "name": "应用安全",
-      "count": 1
-    },
-    {
-      "name": "云桌面",
-      "count": 1
-    },
-    {
-      "name": "架构",
-      "count": 1
-    },
-    {
-      "name": "社工防范",
-      "count": 1
-    },
-    {
-      "name": "漏洞管理",
-      "count": 1
-    },
-    {
-      "name": "护网",
-      "count": 1
-    },
-    {
-      "name": "网络安全",
-      "count": 1
-    },
-    {
-      "name": "培训",
-      "count": 1
-    },
-    {
-      "name": "标准",
-      "count": 1
-    },
-    {
-      "name": "法规",
-      "count": 1
-    },
-    {
-      "name": "目录",
-      "count": 1
-    },
-    {
-      "name": "供应链",
-      "count": 1
-    },
-    {
-      "name": "风险管理",
-      "count": 1
-    },
-    {
-      "name": "第三方",
-      "count": 1
-    },
-    {
-      "name": "数据防泄漏",
-      "count": 1
-    },
-    {
-      "name": "USB管控",
-      "count": 1
-    },
-    {
-      "name": "行为分析",
-      "count": 1
+      "count": 24
     }
   ],
   "domains": [
@@ -106,7 +18,7 @@
       "id": "it-security",
       "name": "IT网络与数据安全",
       "emoji": "🔐",
-      "count": 15
+      "count": 24
     },
     {
       "id": "auto-security",
@@ -141,120 +53,109 @@
   "contested": 0,
   "recent": [
     {
-      "title": "APP安全管理制度",
-      "type": "concept",
-      "path": "entities/app-security-management.md",
+      "title": "信息科技外包风险管理评估报告",
+      "type": "entity",
+      "path": "entities/信息科技外包风险管理评估报告.md",
       "domain": "it-security",
       "tags": [
-        "制度",
-        "应用安全"
+        "制度"
       ],
       "updated": "2026-06-28"
     },
     {
-      "title": "数据分类分级管理实施细则",
-      "type": "concept",
-      "path": "entities/data-classification-implementation.md",
+      "title": "信息科技风险管理报告",
+      "type": "entity",
+      "path": "entities/信息科技风险管理报告.md",
       "domain": "it-security",
       "tags": [
-        "制度",
-        "数据安全"
+        "制度"
       ],
       "updated": "2026-06-28"
     },
     {
-      "title": "数据安全管理制度",
+      "title": "信息科技外包",
       "type": "concept",
-      "path": "entities/data-security-management-policy.md",
+      "path": "concepts/信息科技外包.md",
       "domain": "it-security",
       "tags": [
-        "制度",
-        "数据安全"
+        "制度"
       ],
       "updated": "2026-06-28"
     },
     {
-      "title": "信息安全红线制度",
+      "title": "合作方与供应链管理",
       "type": "concept",
-      "path": "entities/infosec-redline-policy.md",
+      "path": "concepts/合作方与供应链管理.md",
       "domain": "it-security",
       "tags": [
-        "制度",
-        "治理"
+        "制度"
       ],
       "updated": "2026-06-28"
     },
     {
-      "title": "信息安全违规问责管理办法",
+      "title": "数据安全",
       "type": "concept",
-      "path": "entities/infosec-violation-accountability.md",
+      "path": "concepts/数据安全.md",
       "domain": "it-security",
       "tags": [
-        "制度",
-        "治理"
+        "制度"
       ],
       "updated": "2026-06-28"
     },
     {
-      "title": "网络安全事件管理办法",
+      "title": "社工钓鱼案例",
       "type": "concept",
-      "path": "entities/network-incident-management.md",
+      "path": "concepts/社工钓鱼案例.md",
       "domain": "it-security",
       "tags": [
-        "制度",
-        "应急响应"
+        "制度"
       ],
       "updated": "2026-06-28"
     },
     {
-      "title": "办公云桌面IT安全管理规范",
+      "title": "互联网SRC运营方案及成效",
       "type": "concept",
-      "path": "entities/office-cloud-desktop-security.md",
+      "path": "concepts/互联网src运营方案及成效.md",
       "domain": "it-security",
       "tags": [
-        "制度",
-        "终端安全",
-        "云桌面"
+        "制度"
       ],
       "updated": "2026-06-28"
     },
     {
-      "title": "安全架构基本法",
+      "title": "信息安全周报",
       "type": "concept",
-      "path": "entities/security-architecture-basics.md",
+      "path": "concepts/信息安全周报.md",
       "domain": "it-security",
       "tags": [
-        "制度",
-        "架构"
+        "制度"
       ],
       "updated": "2026-06-28"
     },
     {
-      "title": "社会工程学攻击违规处罚实施规范",
+      "title": "护网准备工作",
       "type": "concept",
-      "path": "entities/social-engineering-penalty.md",
+      "path": "concepts/护网准备工作.md",
       "domain": "it-security",
       "tags": [
-        "制度",
-        "社工防范"
+        "制度"
       ],
       "updated": "2026-06-28"
     },
     {
-      "title": "漏洞问责管理规范",
-      "type": "concept",
-      "path": "entities/vulnerability-accountability.md",
+      "title": "dlp采购需求清单",
+      "type": "entity",
+      "path": "entities/dlp采购需求清单.md",
       "domain": "it-security",
       "tags": [
-        "制度",
-        "漏洞管理"
+        "制度"
       ],
       "updated": "2026-06-28"
     }
   ],
   "trend": {
-    "30d": 15,
-    "14d": 15,
-    "7d": 15
+    "30d": 24,
+    "14d": 24,
+    "7d": 24
   }
 }

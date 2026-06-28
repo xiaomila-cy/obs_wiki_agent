@@ -1,190 +1,265 @@
 [
   {
     "title": "APP安全管理制度",
-    "type": "concept",
-    "path": "entities/app-security-management.md",
+    "type": "entity",
+    "path": "entities/app安全管理制度.md",
     "domain": "it-security",
-    "sub_domain": "应用安全",
+    "sub_domain": "app-security",
     "tags": [
-      "制度",
-      "应用安全"
+      "制度"
     ],
     "updated": "2026-06-28"
   },
   {
-    "title": "数据分类分级管理实施细则",
-    "type": "concept",
-    "path": "entities/data-classification-implementation.md",
+    "title": "dlp采购需求清单",
+    "type": "entity",
+    "path": "entities/dlp采购需求清单.md",
     "domain": "it-security",
-    "sub_domain": "数据安全",
+    "sub_domain": "infra-endpoint",
     "tags": [
-      "制度",
-      "数据安全"
-    ],
-    "updated": "2026-06-28"
-  },
-  {
-    "title": "数据安全管理制度",
-    "type": "concept",
-    "path": "entities/data-security-management-policy.md",
-    "domain": "it-security",
-    "sub_domain": "数据安全",
-    "tags": [
-      "制度",
-      "数据安全"
+      "制度"
     ],
     "updated": "2026-06-28"
   },
   {
     "title": "信息安全红线制度",
-    "type": "concept",
-    "path": "entities/infosec-redline-policy.md",
+    "type": "entity",
+    "path": "entities/信息安全红线制度.md",
     "domain": "it-security",
-    "sub_domain": "治理",
+    "sub_domain": "governance",
     "tags": [
-      "制度",
-      "治理"
+      "制度"
     ],
     "updated": "2026-06-28"
   },
   {
     "title": "信息安全违规问责管理办法",
-    "type": "concept",
-    "path": "entities/infosec-violation-accountability.md",
+    "type": "entity",
+    "path": "entities/信息安全违规问责管理办法.md",
     "domain": "it-security",
-    "sub_domain": "治理",
+    "sub_domain": "governance",
     "tags": [
-      "制度",
-      "治理"
+      "制度"
     ],
     "updated": "2026-06-28"
   },
   {
-    "title": "网络安全事件管理办法",
-    "type": "concept",
-    "path": "entities/network-incident-management.md",
+    "title": "信息科技外包风险管理评估报告",
+    "type": "entity",
+    "path": "entities/信息科技外包风险管理评估报告.md",
     "domain": "it-security",
-    "sub_domain": "secops",
+    "sub_domain": "reports",
     "tags": [
-      "制度",
-      "应急响应"
+      "制度"
+    ],
+    "updated": "2026-06-28"
+  },
+  {
+    "title": "信息科技风险管理报告",
+    "type": "entity",
+    "path": "entities/信息科技风险管理报告.md",
+    "domain": "it-security",
+    "sub_domain": "reports",
+    "tags": [
+      "制度"
     ],
     "updated": "2026-06-28"
   },
   {
     "title": "办公云桌面IT安全管理规范",
-    "type": "concept",
-    "path": "entities/office-cloud-desktop-security.md",
+    "type": "entity",
+    "path": "entities/办公云桌面it安全管理规范.md",
     "domain": "it-security",
     "sub_domain": "infra-endpoint",
     "tags": [
-      "制度",
-      "终端安全",
-      "云桌面"
+      "制度"
+    ],
+    "updated": "2026-06-28"
+  },
+  {
+    "title": "办公终端产品选型需求清单",
+    "type": "entity",
+    "path": "entities/办公终端产品选型需求清单.md",
+    "domain": "it-security",
+    "sub_domain": "infra-endpoint",
+    "tags": [
+      "制度"
+    ],
+    "updated": "2026-06-28"
+  },
+  {
+    "title": "数据安全管理制度",
+    "type": "entity",
+    "path": "entities/数据安全管理制度.md",
+    "domain": "it-security",
+    "sub_domain": "data-security",
+    "tags": [
+      "制度"
+    ],
+    "updated": "2026-06-28"
+  },
+  {
+    "title": "标准规范与制度体系",
+    "type": "entity",
+    "path": "entities/标准规范与制度体系.md",
+    "domain": "it-security",
+    "sub_domain": "standards",
+    "tags": [
+      "制度"
+    ],
+    "updated": "2026-06-28"
+  },
+  {
+    "title": "漏洞问责管理规范",
+    "type": "entity",
+    "path": "entities/漏洞问责管理规范.md",
+    "domain": "it-security",
+    "sub_domain": "secops",
+    "tags": [
+      "制度"
+    ],
+    "updated": "2026-06-28"
+  },
+  {
+    "title": "社会工程学攻击违规处罚实施规范",
+    "type": "entity",
+    "path": "entities/社会工程学攻击违规处罚实施规范.md",
+    "domain": "it-security",
+    "sub_domain": "personnel",
+    "tags": [
+      "制度"
+    ],
+    "updated": "2026-06-28"
+  },
+  {
+    "title": "网络安全事件管理办法",
+    "type": "entity",
+    "path": "entities/网络安全事件管理办法.md",
+    "domain": "it-security",
+    "sub_domain": "secops",
+    "tags": [
+      "制度"
+    ],
+    "updated": "2026-06-28"
+  },
+  {
+    "title": "互联网SRC运营方案及成效",
+    "type": "concept",
+    "path": "concepts/互联网src运营方案及成效.md",
+    "domain": "it-security",
+    "sub_domain": "secops",
+    "tags": [
+      "制度"
+    ],
+    "updated": "2026-06-28"
+  },
+  {
+    "title": "信息安全周报",
+    "type": "concept",
+    "path": "concepts/信息安全周报.md",
+    "domain": "it-security",
+    "sub_domain": "secops",
+    "tags": [
+      "制度"
+    ],
+    "updated": "2026-06-28"
+  },
+  {
+    "title": "信息科技外包",
+    "type": "concept",
+    "path": "concepts/信息科技外包.md",
+    "domain": "it-security",
+    "sub_domain": "supply-chain",
+    "tags": [
+      "制度"
+    ],
+    "updated": "2026-06-28"
+  },
+  {
+    "title": "合作方与供应链管理",
+    "type": "concept",
+    "path": "concepts/合作方与供应链管理.md",
+    "domain": "it-security",
+    "sub_domain": "supply-chain",
+    "tags": [
+      "制度"
     ],
     "updated": "2026-06-28"
   },
   {
     "title": "安全架构基本法",
     "type": "concept",
-    "path": "entities/security-architecture-basics.md",
+    "path": "concepts/安全架构基本法.md",
     "domain": "it-security",
-    "sub_domain": "治理",
+    "sub_domain": "governance",
     "tags": [
-      "制度",
-      "架构"
+      "制度"
     ],
     "updated": "2026-06-28"
   },
   {
-    "title": "社会工程学攻击违规处罚实施规范",
+    "title": "护网准备工作",
     "type": "concept",
-    "path": "entities/social-engineering-penalty.md",
+    "path": "concepts/护网准备工作.md",
+    "domain": "it-security",
+    "sub_domain": "secops",
+    "tags": [
+      "制度"
+    ],
+    "updated": "2026-06-28"
+  },
+  {
+    "title": "数据分类分级管理实施细则",
+    "type": "concept",
+    "path": "concepts/数据分类分级管理实施细则.md",
+    "domain": "it-security",
+    "sub_domain": "data-security",
+    "tags": [
+      "制度"
+    ],
+    "updated": "2026-06-28"
+  },
+  {
+    "title": "数据安全",
+    "type": "concept",
+    "path": "concepts/数据安全.md",
+    "domain": "it-security",
+    "sub_domain": "data-security",
+    "tags": [
+      "制度"
+    ],
+    "updated": "2026-06-28"
+  },
+  {
+    "title": "社工钓鱼案例",
+    "type": "concept",
+    "path": "concepts/社工钓鱼案例.md",
     "domain": "it-security",
     "sub_domain": "personnel",
     "tags": [
-      "制度",
-      "社工防范"
+      "制度"
     ],
     "updated": "2026-06-28"
   },
   {
-    "title": "漏洞问责管理规范",
+    "title": "终端安全",
     "type": "concept",
-    "path": "entities/vulnerability-accountability.md",
-    "domain": "it-security",
-    "sub_domain": "secops",
-    "tags": [
-      "制度",
-      "漏洞管理"
-    ],
-    "updated": "2026-06-28"
-  },
-  {
-    "title": "数据安全定责体系",
-    "type": "concept",
-    "path": "concepts/data-security-responsibility.md",
-    "domain": "it-security",
-    "sub_domain": "数据安全",
-    "tags": [
-      "治理",
-      "数据安全",
-      "合规"
-    ],
-    "updated": "2026-06-28"
-  },
-  {
-    "title": "护网行动安全方案",
-    "type": "concept",
-    "path": "concepts/hw-defense-plan.md",
-    "domain": "it-security",
-    "sub_domain": "secops",
-    "tags": [
-      "护网",
-      "应急响应",
-      "网络安全",
-      "培训"
-    ],
-    "updated": "2026-06-28"
-  },
-  {
-    "title": "安全标准规范目录",
-    "type": "concept",
-    "path": "concepts/security-standards-catalog.md",
-    "domain": "it-security",
-    "sub_domain": "standards",
-    "tags": [
-      "标准",
-      "法规",
-      "合规",
-      "目录"
-    ],
-    "updated": "2026-06-28"
-  },
-  {
-    "title": "合作方与供应链安全管理",
-    "type": "concept",
-    "path": "concepts/supply-chain-security.md",
-    "domain": "it-security",
-    "sub_domain": "供应链",
-    "tags": [
-      "供应链",
-      "风险管理",
-      "第三方"
-    ],
-    "updated": "2026-06-28"
-  },
-  {
-    "title": "USB写入权限与终端安全规范",
-    "type": "concept",
-    "path": "concepts/usb-endpoint-security.md",
+    "path": "concepts/终端安全.md",
     "domain": "it-security",
     "sub_domain": "infra-endpoint",
     "tags": [
-      "终端安全",
-      "数据防泄漏",
-      "USB管控",
-      "行为分析"
+      "制度"
+    ],
+    "updated": "2026-06-28"
+  },
+  {
+    "title": "网络攻防",
+    "type": "concept",
+    "path": "concepts/网络攻防.md",
+    "domain": "it-security",
+    "sub_domain": "secops",
+    "tags": [
+      "制度"
     ],
     "updated": "2026-06-28"
   }

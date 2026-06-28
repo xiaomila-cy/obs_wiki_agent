@@ -1,31 +1,41 @@
 {
   "sub_domains": {
     "it-security": [
-      {"id": "治理", "name": "安全治理与制度", "emoji": "📋", "desc": "红线、问责、架构等顶层制度"},
-      {"id": "数据安全", "name": "数据安全", "emoji": "🔒", "desc": "定责、分类分级、管理制度"},
+      {"id": "governance", "name": "安全治理与制度", "emoji": "📋", "desc": "红线、问责、架构等顶层制度"},
+      {"id": "data-security", "name": "数据安全", "emoji": "🔒", "desc": "定责、分类分级、管理制度"},
       {"id": "infra-endpoint", "name": "基础设施与终端安全", "emoji": "🖥️", "desc": "云桌面、USB、网络接入"},
-      {"id": "应用安全", "name": "应用安全", "emoji": "📱", "desc": "APP安全、SDL"},
-      {"id": "secops", "name": "安全运营与应急", "emoji": "🛡️", "desc": "护网、事件管理、漏洞治理"},
-      {"id": "供应链", "name": "供应链与第三方", "emoji": "🔗", "desc": "合作方准入、供应链管控"},
+      {"id": "app-security", "name": "应用安全", "emoji": "📱", "desc": "APP安全、SDL"},
+      {"id": "secops", "name": "安全运营与应急", "emoji": "🛡️", "desc": "护网、事件管理、漏洞治理、SRC运营"},
+      {"id": "supply-chain", "name": "供应链与第三方", "emoji": "🔗", "desc": "合作方准入、信息科技外包"},
       {"id": "personnel", "name": "人员安全", "emoji": "👤", "desc": "社工防范、意识培训"},
-      {"id": "standards", "name": "标准规范", "emoji": "📚", "desc": "国标、行业标准目录"}
+      {"id": "standards", "name": "标准规范", "emoji": "📚", "desc": "国标、行业标准目录"},
+      {"id": "reports", "name": "风险评估报告", "emoji": "📊", "desc": "外包风险管理、信息科技风险报告"}
     ]
   },
   "mapping": {
-    "concepts/data-security-responsibility.md": "数据安全",
-    "concepts/hw-defense-plan.md": "secops",
-    "concepts/usb-endpoint-security.md": "infra-endpoint",
-    "concepts/supply-chain-security.md": "供应链",
-    "concepts/security-standards-catalog.md": "standards",
-    "entities/office-cloud-desktop-security.md": "infra-endpoint",
-    "entities/infosec-violation-accountability.md": "治理",
-    "entities/vulnerability-accountability.md": "secops",
-    "entities/data-security-management-policy.md": "数据安全",
-    "entities/data-classification-implementation.md": "数据安全",
-    "entities/app-security-management.md": "应用安全",
-    "entities/network-incident-management.md": "secops",
-    "entities/social-engineering-penalty.md": "personnel",
-    "entities/infosec-redline-policy.md": "治理",
-    "entities/security-architecture-basics.md": "治理"
+    "entities/标准规范与制度体系.md": "standards",
+    "entities/办公云桌面it安全管理规范.md": "infra-endpoint",
+    "entities/信息安全违规问责管理办法.md": "governance",
+    "entities/漏洞问责管理规范.md": "secops",
+    "entities/数据安全管理制度.md": "data-security",
+    "concepts/数据分类分级管理实施细则.md": "data-security",
+    "entities/app安全管理制度.md": "app-security",
+    "entities/网络安全事件管理办法.md": "secops",
+    "entities/社会工程学攻击违规处罚实施规范.md": "personnel",
+    "entities/信息安全红线制度.md": "governance",
+    "concepts/安全架构基本法.md": "governance",
+    "concepts/终端安全.md": "infra-endpoint",
+    "entities/办公终端产品选型需求清单.md": "infra-endpoint",
+    "entities/dlp采购需求清单.md": "infra-endpoint",
+    "concepts/网络攻防.md": "secops",
+    "concepts/护网准备工作.md": "secops",
+    "concepts/信息安全周报.md": "secops",
+    "concepts/互联网src运营方案及成效.md": "secops",
+    "concepts/社工钓鱼案例.md": "personnel",
+    "concepts/数据安全.md": "data-security",
+    "concepts/合作方与供应链管理.md": "supply-chain",
+    "concepts/信息科技外包.md": "supply-chain",
+    "entities/信息科技外包风险管理评估报告.md": "reports",
+    "entities/信息科技风险管理报告.md": "reports"
   }
 }
