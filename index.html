@@ -10,12 +10,14 @@ body{font-family:-apple-system,"Noto Sans SC",sans-serif;background:var(--bg);co
 .header{background:linear-gradient(135deg,#1e293b,#0f172a);border-bottom:1px solid var(--border);padding:.9rem 1.5rem;display:flex;align-items:center;gap:.8rem;flex-wrap:wrap}
 .header a{color:var(--accent2);text-decoration:none;font-size:.85rem}
 .header h1{font-size:1.15rem;color:var(--accent);flex:1;margin:0}
-.container{max-width:900px;margin:0 auto;padding:1.2rem}
+.container{max-width:1100px;margin:0 auto;padding:1.2rem}
 .sub-section{margin-bottom:1.8rem}
 .sub-heading{font-size:.95rem;font-weight:600;margin-bottom:.5rem;padding-bottom:.3rem;border-bottom:1px solid var(--border);display:flex;align-items:baseline;gap:.3rem}
 .sub-count{font-weight:400;color:var(--muted);font-size:.76rem}
 .sub-desc{font-size:.72rem;color:var(--muted);margin-bottom:.5rem}
-.card-grid{display:grid;grid-template-columns:1fr 1fr;gap:.5rem}
+.card-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:.5rem}
+@media(max-width:1024px){.card-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:640px){.card-grid{grid-template-columns:1fr}}
 .card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:.8rem 1rem}
 .card:hover{border-color:var(--accent2);cursor:pointer}
 .card-title{font-weight:600;font-size:.88rem}
@@ -32,7 +34,7 @@ body{font-family:-apple-system,"Noto Sans SC",sans-serif;background:var(--bg);co
 .md-view pre{background:#0f172a;padding:.8rem;border-radius:6px;overflow-x:auto;margin:.8rem 0;border:1px solid var(--border);font-size:.8rem}
 .md-view blockquote{border-left:3px solid var(--accent2);padding:.3rem .8rem;margin:.6rem 0;color:var(--muted)}
 .empty{text-align:center;padding:3rem 1rem;color:var(--muted)}.empty h3{font-size:1rem;color:var(--text)}
-@media(max-width:768px){.card-grid{grid-template-columns:1fr}.header{padding:.7rem}.container{padding:.7rem}}
+@media(max-width:768px){.header{padding:.7rem}.container{padding:.7rem}}
 </style>
 </head>
 <body>
