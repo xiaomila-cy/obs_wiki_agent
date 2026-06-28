@@ -253,6 +253,8 @@ async function viewPage(path,title){currentView='page';
       else if(l.startsWith('- ')){h+='<li>'+l.slice(2)+'</li>'}
       else if(l.match(/^\d+\. /)){h+='<li>'+l.replace(/^\d+\. /,'')+'</li>'}
       else if(l.startsWith('> ')){h+='<blockquote>'+l.slice(2)+'</blockquote>'}
+      else if(l.match(/^!\[\[(.+)\]\]$/)){var img=l.match(/^!\[\[(.+)\]\]$/)[1];h+='<img src="raw/assets/'+img+'" alt="'+img+'" style="max-width:100%;border-radius:8px;margin:.5rem 0" loading="lazy">'}
+      else if(l.match(/^!\[.*\]\((.+)\)$/)){var img2=l.match(/^!\[.*\]\((.+)\)$/)[1];h+='<img src="'+img2+'" alt="" style="max-width:100%;border-radius:8px;margin:.5rem 0" loading="lazy">'}
       else if(l){h+='<p>'+l+'</p>'}
     }
     h=h.replace(/((?:<li>[^<]*<\/li>\s*)+)/g,'<ul>$1</ul>');
