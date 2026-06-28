@@ -6,6 +6,7 @@ type: 制度
 tags: [终端安全, 制度, 云桌面]
 domain: it-security
 sources: [飞书知识库]
+reading_time: 5 分钟
 ---
 
 # 办公云桌面IT安全管理规范

@@ -6,6 +6,7 @@ type: 方案
 tags: [汽车安全, 测试用例]
 domain: auto-security
 sources: [飞书云文档]
+reading_time: 70 分钟
 ---
 ## 第3批：手机App + AIbox（AI处理单元）
 

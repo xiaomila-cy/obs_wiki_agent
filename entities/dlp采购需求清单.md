@@ -6,6 +6,7 @@ type: 方案
 tags: [终端安全, 制度, 数据防泄漏]
 domain: it-security
 sources: [飞书知识库]
+reading_time: 7 分钟
 ---
 
 # dlp采购需求清单

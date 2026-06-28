@@ -6,6 +6,7 @@ type: 方案
 tags: [汽车安全, 测试用例]
 domain: auto-security
 sources: [飞书云文档]
+reading_time: 36 分钟
 ---
 ## 第5批：小程序 + ZCM（最终批）
 

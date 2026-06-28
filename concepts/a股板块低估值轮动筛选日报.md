@@ -6,6 +6,7 @@ type: 报告
 tags: [投资, 板块轮动]
 domain: investment
 sources: [飞书云文档]
+reading_time: 129 分钟
 ---
 数据基于2026年6月5日（上周五）收盘
 轮动进度：板块1-电力 / 板块2-煤炭（第1-2/60轮）

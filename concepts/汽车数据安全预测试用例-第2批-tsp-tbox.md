@@ -6,6 +6,7 @@ type: 方案
 tags: [汽车安全, 测试用例]
 domain: auto-security
 sources: [飞书云文档]
+reading_time: 78 分钟
 ---
 ## 第2批：TSP（云端平台）+ Tbox（通信网关）
 

@@ -6,6 +6,7 @@ type: 方案
 tags: [汽车安全, 测试用例]
 domain: auto-security
 sources: [飞书云文档]
+reading_time: 39 分钟
 ---
 ## 第4批：生态App + 销服/售后
 

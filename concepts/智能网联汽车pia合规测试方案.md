@@ -6,6 +6,7 @@ type: 方案
 tags: [汽车安全, 合规, PIA]
 domain: auto-security
 sources: [飞书云文档]
+reading_time: 43 分钟
 ---
 标准依据：GB/T 44464-2024 | GB 44495-2024 | GB 44496-2024
 测试周期：2026年7月10日 — 8月10日（31天）

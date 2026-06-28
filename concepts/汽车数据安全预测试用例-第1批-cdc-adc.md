@@ -6,6 +6,7 @@ type: 方案
 tags: [汽车安全, 测试用例]
 domain: auto-security
 sources: [飞书云文档]
+reading_time: 91 分钟
 ---
 ## 第1批：CDC（座舱域控制器）+ ADC（智驾域控制器）
 

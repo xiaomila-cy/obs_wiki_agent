@@ -6,6 +6,7 @@ type: 制度
 tags: [应用安全, 制度]
 domain: it-security
 sources: [飞书知识库]
+reading_time: 8 分钟
 ---
 
 # APP安全管理制度

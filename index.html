@@ -61,6 +61,15 @@ body{font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans SC
 .reading pre{background:#1e293b;color:#e2e8f0;padding:.8rem;border-radius:6px;overflow-x:auto;margin:.7rem 0;font-size:.78rem;line-height:1.55}
 .reading pre code{background:none;color:inherit;padding:0}
 .reading blockquote{border-left:3px solid var(--blue);padding:.2rem .8rem;margin:.6rem 0;color:var(--muted);font-style:italic}
+/* Progress bar */
+.progress-bar{position:fixed;top:48px;left:0;height:3px;background:var(--accent);z-index:30;transition:width .1s}
+/* Reading meta */
+.reading-meta{display:flex;gap:1rem;align-items:center;font-size:.78rem;color:var(--muted);margin-bottom:1rem;flex-wrap:wrap}
+/* Backlinks */
+.backlinks{margin-top:2.5rem;padding-top:1rem;border-top:1px solid var(--border)}
+.backlinks h2{font-size:.9rem;color:var(--muted);margin-bottom:.5rem;border:none;padding:0}
+.backlinks a{display:inline-block;margin:.15rem .5rem .15rem 0;font-size:.82rem;color:var(--blue);text-decoration:none}
+.backlinks a:hover{text-decoration:underline}
 .breadcrumb{font-size:.78rem;color:var(--muted);margin-bottom:1rem}.breadcrumb a{color:var(--blue);text-decoration:none}
 .empty{text-align:center;padding:3rem 1rem;color:var(--muted)}.empty h2{font-size:1rem;color:var(--text);margin-bottom:.3rem}
 .s-results{position:absolute;top:100%;left:0;right:0;background:var(--surface);border:1px solid var(--border);border-radius:8px;box-shadow:var(--shadow-sm);max-height:300px;overflow-y:auto;z-index:30;display:none}
@@ -247,16 +256,40 @@ async function viewPage(path,title){currentView='page';
       else if(l){h+='<p>'+l+'</p>'}
     }
     h=h.replace(/((?:<li>[^<]*<\/li>\s*)+)/g,'<ul>$1</ul>');
+    // Reading time from frontmatter
+    var rt='';var rtm=md.match(/reading_time:\s*(.+)/);if(rtm)rt=rtm[1];
     // Render TOC
     var tc='';
     toc.forEach(function(e){tc+='<a href="#'+e.id+'" class="'+(e.level>1?'indent':'')+'">'+e.t+'</a>'});
     document.getElementById('tocLinks').innerHTML=tc;
     document.getElementById('tocPanel').classList.add('show');
-    document.getElementById('content').innerHTML='<div class="reading">'+h+'</div>'
+    
+    // Reading meta
+    var meta='<div class="reading-meta">';
+    if(rt)meta+='<span>⏱️ '+rt+'</span>';
+    meta+='<span>📝 '+h.split(' ').length+' 字</span>';
+    meta+='</div>';
+    
+    // Backlinks
+    var bl='';
+    try{
+      var blr=await fetch('backlinks.json');var bld=await blr.json();
+      if(bld[title]){bl='<div class="backlinks"><h2>🔗 引用此页</h2>';bld[title].forEach(function(b){bl+='<a href="#" onclick="event.preventDefault();findPage(\''+b+'\')">'+b+'</a>'});bl+='</div>'}
+    }catch(e){}
+    
+    document.getElementById('content').innerHTML='<div id="progressBar" class="progress-bar" style="width:0%"></div><div class="reading">'+meta+h+bl+'</div>';
+    
+    // Progress bar on scroll
+    window.onscroll=function(){
+      var winH=document.documentElement.scrollHeight-document.documentElement.clientHeight;
+      var scrolled=(window.scrollY/winH)*100;
+      var pb=document.getElementById('progressBar');if(pb)pb.style.width=Math.min(scrolled,100)+'%'
+    };
   }catch(e){document.getElementById('content').innerHTML='<div class="empty"><p>加载失败</p></div>'}
 }
 
 // Search
+function findPage(title){var p=allPages.find(function(pg){return pg.title===title});if(p){viewPage(p.path,p.title)}else{alert("页面未找到: "+title)}}
 function doSearch(){
   var q=document.getElementById('searchInput').value.trim().toLowerCase();
   var box=document.getElementById('searchResults');
