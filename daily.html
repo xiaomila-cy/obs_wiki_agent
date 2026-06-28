@@ -101,7 +101,7 @@ function render(d){
     html+='<div class="status-card '+(allDone?'status-done':'status-pending')+'">';
     html+='<h2><span class="status-icon">'+(allDone?'✅':'📋')+'</span>'+(allDone?'今日任务完成！':'今日任务')+'</h2>';
     articles.forEach(function(a,i){
-      html+='<div class="article-card'+(read[i]?' completed':'')+'" onclick="openArticle('+i+',\''+a.path+'\')">';
+      html+='<div class="article-card'+(read[i]?' completed':'')+'" onclick="openArticle('+i+',\''+esc(a.path)+'\')">';
       html+='<div class="num '+(read[i]?'num-done':'num-pending')+'">'+(read[i]?'✓':(i+1))+'</div>';
       html+='<div class="article-body"><div class="article-title">'+a.title+'</div><div class="article-meta">'+(DOMS[a.domain]?DOMS[a.domain].emoji+' ':'')+TYPES[a.type]+'</div></div>';
       html+='<div class="article-arrow">→</div></div>';
@@ -136,6 +136,8 @@ function openArticle(idx,path){
   read[idx]=true;localStorage.setItem('daily_read_'+today,JSON.stringify(read));
   window.location.href='index.html?page='+encodeURIComponent(path);
 }
+
+init();
 </script>
 </body>
 </html>
