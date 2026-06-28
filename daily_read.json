@@ -2,24 +2,24 @@
   "date": "2026-06-28",
   "articles": [
     {
-      "path": "entities/app-security-management.md",
+      "path": "entities/app安全管理制度.md",
       "title": "APP安全管理制度",
       "domain": "it-security",
-      "type": "concept"
+      "type": "制度"
     },
     {
-      "path": "entities/data-classification-implementation.md",
-      "title": "数据分类分级管理实施细则",
+      "path": "entities/dlp采购需求清单.md",
+      "title": "dlp采购需求清单",
       "domain": "it-security",
-      "type": "concept"
+      "type": "方案"
     }
   ],
   "history": {
-    "entities/app-security-management.md": {
+    "entities/app安全管理制度.md": {
       "times": 1,
       "last_read": ""
     },
-    "entities/data-classification-implementation.md": {
+    "entities/dlp采购需求清单.md": {
       "times": 1,
       "last_read": ""
     }
