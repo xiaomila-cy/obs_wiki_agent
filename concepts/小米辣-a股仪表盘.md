@@ -574,3 +574,11 @@ Open: 8.69 | High: 9.00 | Low: 8.54 | PrevClose: 8.73 | Volume: 199076 lots | Am
 Announcements: [06-26] New chairman elected; [06-26] Annual shareholder meeting resolution
 Guba: Rank#1312, 229.7K followers. Hot: capital increase ratio, chairman change, restructuring
 Status: Both above stop loss, no alert triggered.
+
+## 相关文档
+- [[投资最重要的事蒸馏笔记]]
+- [[2026年股票投资实盘记录]]
+- [[2026年投资实盘复盘]]
+- [[股票投资分析报告]]
+- [[A股板块低估值轮动筛选日报]]
+
