@@ -43,6 +43,7 @@ body{font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans SC
 [data-theme="dark"] .tag-click:hover{background:#3b82f6;color:#fff}
 .tag-click{cursor:pointer}.tag-click:hover{background:#2563eb;color:#fff}
 .badge{padding:.08em .35em;border-radius:3px;font-size:.6rem;font-weight:600}
+.badge-click{cursor:pointer;transition:all .15s}.badge-click:hover{filter:brightness(.9)}
 .b-entity{background:#eff6ff;color:#2563eb}.b-concept{background:#f0fdf4;color:#16a34a}
 .b-comparison{background:#fffbeb;color:#d97706}.b-query{background:#faf5ff;color:#9333ea}
 [data-theme="dark"] .b-entity{background:#1e3a5f;color:#7dd3fc}[data-theme="dark"] .b-concept{background:#14532d;color:#86efac}
@@ -118,11 +119,13 @@ async function init(){
   currentDomain=p.get('domain')||'';
   var directPage=p.get('page')||'';
   var filterTag=p.get('tag')||'';
+  var filterType=p.get("type")||"";
   try{var r1=await fetch('page_list.json');allPages=await r1.json()}catch(e){allPages=[]}
   try{var r2=await fetch('sub_domains.json');var sd=await r2.json();subDomains=sd.sub_domains[currentDomain]||[]}catch(e){}
   buildSidebar();
   if(directPage){viewPage(directPage,directPage.split('/').pop().replace('.md','').replace(/-/g,' '));return}
   if(filterTag){showTagFilter(filterTag,currentDomain);return}
+  if(filterType){showTypeFilter(filterType,currentDomain);return}
   showList()
 }
 
@@ -178,7 +181,7 @@ function showList(){currentView='list';document.getElementById('tocPanel').class
     html+='<div class="sub"><div class="sub-head">'+name+'<span class="cnt">'+groups[sdId].length+'</span></div>';
     if(info&&info.desc)html+='<div style="font-size:.72rem;color:var(--muted);margin-bottom:.5rem">'+info.desc+'</div>';
     html+='<div class="card-grid">';
-    groups[sdId].forEach(function(p){var bc=TYPE_COLORS[p.type]||'b-entity';html+='<div class="card" onclick="viewPage(\''+p.path+'\',\''+esc(p.title)+'\')"><div class="card-title">'+p.title+'</div><div class="card-meta"><span class="badge '+bc+'">'+p.type+'</span> · '+p.updated+'</div><div class="card-tags">'+(p.tags||[]).slice(0,3).map(function(t){return '<span class="tag">'+t+'</span>'}).join('')+'</div></div>'});
+    groups[sdId].forEach(function(p){var bc=TYPE_COLORS[p.type]||'b-entity';html+='<div class="card" onclick="viewPage(\''+p.path+'\',\''+esc(p.title)+'\')"><div class="card-title">'+p.title+'</div><div class="card-meta"><span class="badge badge-click '+bc+'">'+p.type+'</span> · '+p.updated+'</div><div class="card-tags">'+(p.tags||[]).slice(0,3).map(function(t){return '<span class="tag">'+t+'</span>'}).join('')+'</div></div>'});
     html+='</div></div>';
   });
   document.getElementById('content').innerHTML=html
@@ -191,9 +194,22 @@ function filterBySub(domain,sub){currentDomain=domain;currentView='list';
   var d=DOMS[domain];var info=null;subDomains.forEach(function(s){if(s.id===sub)info=s});
   var html='<div class="breadcrumb"><a href="dashboard.html">仪表盘</a> / <a href="#" onclick="showList()">'+d.name+'</a> / '+(info?info.name:sub)+'</div>';
   html+='<div class="card-grid">';
-  pages.forEach(function(p){html+='<div class="card" onclick="viewPage(\''+p.path+'\',\''+esc(p.title)+'\')"><div class="card-title">'+p.title+'</div><div class="card-meta"><span class="badge '+TYPE_COLORS[p.type]+'">'+p.type+'</span> · '+p.updated+'</div><div class="card-tags">'+(p.tags||[]).slice(0,3).map(function(t){return '<span class="tag">'+t+'</span>'}).join('')+'</div></div>'});
+  pages.forEach(function(p){html+='<div class="card" onclick="viewPage(\''+p.path+'\',\''+esc(p.title)+'\')"><div class="card-title">'+p.title+'</div><div class="card-meta"><span class="badge badge-click '+TYPE_COLORS[p.type]+'">'+p.type+'</span> · '+p.updated+'</div><div class="card-tags">'+(p.tags||[]).slice(0,3).map(function(t){return '<span class="tag">'+t+'</span>'}).join('')+'</div></div>'});
   html+='</div>';
   document.getElementById('content').innerHTML=html
+}
+
+function showTypeFilter(type,domain){
+  currentView="list";currentDomain=domain;
+  var pages=allPages.filter(function(p){return p.domain===domain&&p.type===type});
+  document.getElementById("tocPanel").classList.remove("show");
+  var d=DOMS[domain]||{emoji:"📦",name:domain};
+  var html="<div class=\"breadcrumb\"><a href=\"dashboard.html\">仪表盘</a> / "+d.name+" / 📋 "+type+"</div>";
+  html+="<div style=\"font-size:.78rem;color:var(--muted);margin-bottom:1rem\">类型筛选：<strong>"+type+"</strong> — 共 <strong>"+pages.length+"</strong> 篇</div>";
+  html+="<div class=\"card-grid\">";
+  pages.forEach(function(p){html+="<div class=\"card\" onclick=\"viewPage(\+p.path+,\+esc(p.title)+)\"><div class=\"card-title\">"+p.title+"</div><div class=\"card-meta\">"+p.type+" · "+p.updated+"</div></div>"});
+  html+="</div>";
+  document.getElementById("content").innerHTML=html
 }
 
 function showTagFilter(tag,domain){
@@ -204,7 +220,7 @@ function showTagFilter(tag,domain){
   var html='<div class="breadcrumb"><a href="dashboard.html">仪表盘</a> / '+d.name+' / 🏷️ '+tag+'</div>';
   html+='<div style="font-size:.78rem;color:var(--muted);margin-bottom:1rem">标签筛选：<strong>'+tag+'</strong> — 共 <strong>'+pages.length+'</strong> 篇</div>';
   html+='<div class="card-grid">';
-  pages.forEach(function(p){html+='<div class="card" onclick="viewPage(\''+p.path+'\',\''+esc(p.title)+'\')"><div class="card-title">'+p.title+'</div><div class="card-meta"><span class="badge '+TYPE_COLORS[p.type]+'">'+p.type+'</span> · '+p.updated+'</div><div class="card-tags">'+(p.tags||[]).slice(0,3).map(function(t){return '<span class="tag">'+t+'</span>'}).join('')+'</div></div>'});
+  pages.forEach(function(p){html+='<div class="card" onclick="viewPage(\''+p.path+'\',\''+esc(p.title)+'\')"><div class="card-title">'+p.title+'</div><div class="card-meta"><span class="badge badge-click '+TYPE_COLORS[p.type]+'">'+p.type+'</span> · '+p.updated+'</div><div class="card-tags">'+(p.tags||[]).slice(0,3).map(function(t){return '<span class="tag">'+t+'</span>'}).join('')+'</div></div>'});
   html+='</div>';
   document.getElementById('content').innerHTML=html
 }
@@ -254,6 +270,7 @@ function doSearch(){
 
 init();
 document.addEventListener("click",function(e){if(e.target.classList.contains("tag-click")){e.stopPropagation();e.preventDefault();var t=e.target.textContent.trim().split(" ")[0];var domain=new URLSearchParams(location.search).get("domain")||"";location.href="index.html?domain="+domain+"\&tag="+encodeURIComponent(t)}});
+document.addEventListener("click",function(e){if(e.target.classList.contains("badge-click")){e.stopPropagation();e.preventDefault();var type=e.target.textContent.trim();var d=new URLSearchParams(location.search).get("domain")||"";location.href="index.html?domain="+d+"\&type="+encodeURIComponent(type)}});
 </script>
 </body>
 </html>
