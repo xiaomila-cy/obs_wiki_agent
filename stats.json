@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-28 15:54:24",
+  "generated_at": "2026-06-28 16:09:54",
   "total_pages": 24,
   "type_count": {
     "entity": 13,
@@ -53,6 +53,46 @@
   "contested": 0,
   "recent": [
     {
+      "title": "APP安全管理制度",
+      "type": "entity",
+      "path": "entities/app安全管理制度.md",
+      "domain": "it-security",
+      "tags": [
+        "制度"
+      ],
+      "updated": "2026-06-28"
+    },
+    {
+      "title": "dlp采购需求清单",
+      "type": "entity",
+      "path": "entities/dlp采购需求清单.md",
+      "domain": "it-security",
+      "tags": [
+        "制度"
+      ],
+      "updated": "2026-06-28"
+    },
+    {
+      "title": "信息安全红线制度",
+      "type": "entity",
+      "path": "entities/信息安全红线制度.md",
+      "domain": "it-security",
+      "tags": [
+        "制度"
+      ],
+      "updated": "2026-06-28"
+    },
+    {
+      "title": "信息安全违规问责管理办法",
+      "type": "entity",
+      "path": "entities/信息安全违规问责管理办法.md",
+      "domain": "it-security",
+      "tags": [
+        "制度"
+      ],
+      "updated": "2026-06-28"
+    },
+    {
       "title": "信息科技外包风险管理评估报告",
       "type": "entity",
       "path": "entities/信息科技外包风险管理评估报告.md",
@@ -73,79 +113,39 @@
       "updated": "2026-06-28"
     },
     {
-      "title": "信息科技外包",
-      "type": "concept",
-      "path": "concepts/信息科技外包.md",
-      "domain": "it-security",
-      "tags": [
-        "制度"
-      ],
-      "updated": "2026-06-28"
-    },
-    {
-      "title": "合作方与供应链管理",
-      "type": "concept",
-      "path": "concepts/合作方与供应链管理.md",
-      "domain": "it-security",
-      "tags": [
-        "制度"
-      ],
-      "updated": "2026-06-28"
-    },
-    {
-      "title": "数据安全",
-      "type": "concept",
-      "path": "concepts/数据安全.md",
-      "domain": "it-security",
-      "tags": [
-        "制度"
-      ],
-      "updated": "2026-06-28"
-    },
-    {
-      "title": "社工钓鱼案例",
-      "type": "concept",
-      "path": "concepts/社工钓鱼案例.md",
-      "domain": "it-security",
-      "tags": [
-        "制度"
-      ],
-      "updated": "2026-06-28"
-    },
-    {
-      "title": "互联网SRC运营方案及成效",
-      "type": "concept",
-      "path": "concepts/互联网src运营方案及成效.md",
-      "domain": "it-security",
-      "tags": [
-        "制度"
-      ],
-      "updated": "2026-06-28"
-    },
-    {
-      "title": "信息安全周报",
-      "type": "concept",
-      "path": "concepts/信息安全周报.md",
-      "domain": "it-security",
-      "tags": [
-        "制度"
-      ],
-      "updated": "2026-06-28"
-    },
-    {
-      "title": "护网准备工作",
-      "type": "concept",
-      "path": "concepts/护网准备工作.md",
-      "domain": "it-security",
-      "tags": [
-        "制度"
-      ],
-      "updated": "2026-06-28"
-    },
-    {
-      "title": "dlp采购需求清单",
+      "title": "办公云桌面IT安全管理规范",
       "type": "entity",
-      "path": "entities/dlp采购需求清单.md",
+      "path": "entities/办公云桌面it安全管理规范.md",
+      "domain": "it-security",
+      "tags": [
+        "制度"
+      ],
+      "updated": "2026-06-28"
+    },
+    {
+      "title": "办公终端产品选型需求清单",
+      "type": "entity",
+      "path": "entities/办公终端产品选型需求清单.md",
+      "domain": "it-security",
+      "tags": [
+        "制度"
+      ],
+      "updated": "2026-06-28"
+    },
+    {
+      "title": "数据安全管理制度",
+      "type": "entity",
+      "path": "entities/数据安全管理制度.md",
+      "domain": "it-security",
+      "tags": [
+        "制度"
+      ],
+      "updated": "2026-06-28"
+    },
+    {
+      "title": "标准规范与制度体系",
+      "type": "entity",
+      "path": "entities/标准规范与制度体系.md",
       "domain": "it-security",
       "tags": [
         "制度"
