@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-30 21:58:58",
+  "generated_at": "2026-06-30 22:06:40",
   "total_pages": 41,
   "type_count": {
     "制度": 14,
@@ -34,15 +34,15 @@
       "count": 4
     },
     {
+      "name": "数据安全",
+      "count": 4
+    },
+    {
       "name": "治理",
       "count": 3
     },
     {
       "name": "供应链",
-      "count": 3
-    },
-    {
-      "name": "数据安全",
       "count": 3
     },
     {
@@ -150,16 +150,16 @@
   "contested": 0,
   "recent": [
     {
-      "title": "智能网联汽车安全行业动态与基础",
+      "title": "智能网联汽车安全行业动态（2025更新）",
       "type": "报告",
       "path": "concepts/智能网联汽车安全行业动态.md",
       "domain": "auto-security",
       "tags": [
         "汽车安全",
         "行业动态",
-        "政策法规"
+        "数据安全"
       ],
-      "updated": "2026-06-29"
+      "updated": "2026-06-30"
     },
     {
       "title": "APP安全管理制度",
