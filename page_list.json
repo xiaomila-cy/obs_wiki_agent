@@ -2,9 +2,9 @@
   {
     "title": "APP安全管理制度",
     "type": "制度",
-    "path": "entities/app安全管理制度.md",
+    "path": "IT网络与数据安全/app安全管理制度.md",
     "domain": "it-security",
-    "sub_domain": "app-security",
+    "sub_domain": "",
     "tags": [
       "应用安全",
       "制度"
@@ -14,9 +14,9 @@
   {
     "title": "dlp采购需求清单",
     "type": "方案",
-    "path": "entities/dlp采购需求清单.md",
+    "path": "IT网络与数据安全/dlp采购需求清单.md",
     "domain": "it-security",
-    "sub_domain": "infra-endpoint",
+    "sub_domain": "",
     "tags": [
       "终端安全",
       "制度",
@@ -25,183 +25,11 @@
     "updated": "2026-06-28"
   },
   {
-    "title": "信息安全红线制度",
-    "type": "制度",
-    "path": "entities/信息安全红线制度.md",
-    "domain": "it-security",
-    "sub_domain": "governance",
-    "tags": [
-      "治理",
-      "制度"
-    ],
-    "updated": "2026-06-28"
-  },
-  {
-    "title": "信息安全违规问责管理办法",
-    "type": "制度",
-    "path": "entities/信息安全违规问责管理办法.md",
-    "domain": "it-security",
-    "sub_domain": "governance",
-    "tags": [
-      "治理",
-      "制度"
-    ],
-    "updated": "2026-06-28"
-  },
-  {
-    "title": "信息科技外包风险管理评估报告",
-    "type": "报告",
-    "path": "entities/信息科技外包风险管理评估报告.md",
-    "domain": "it-security",
-    "sub_domain": "reports",
-    "tags": [
-      "风险管理",
-      "报告",
-      "供应链"
-    ],
-    "updated": "2026-06-28"
-  },
-  {
-    "title": "信息科技风险管理报告",
-    "type": "报告",
-    "path": "entities/信息科技风险管理报告.md",
-    "domain": "it-security",
-    "sub_domain": "reports",
-    "tags": [
-      "风险管理",
-      "报告"
-    ],
-    "updated": "2026-06-28"
-  },
-  {
-    "title": "办公云桌面IT安全管理规范",
-    "type": "制度",
-    "path": "entities/办公云桌面it安全管理规范.md",
-    "domain": "it-security",
-    "sub_domain": "infra-endpoint",
-    "tags": [
-      "终端安全",
-      "制度",
-      "云桌面"
-    ],
-    "updated": "2026-06-28"
-  },
-  {
-    "title": "办公终端产品选型需求清单",
-    "type": "方案",
-    "path": "entities/办公终端产品选型需求清单.md",
-    "domain": "it-security",
-    "sub_domain": "infra-endpoint",
-    "tags": [
-      "终端安全",
-      "制度"
-    ],
-    "updated": "2026-06-28"
-  },
-  {
-    "title": "数据安全管理制度",
-    "type": "制度",
-    "path": "entities/数据安全管理制度.md",
-    "domain": "it-security",
-    "sub_domain": "data-security",
-    "tags": [
-      "数据安全",
-      "制度"
-    ],
-    "updated": "2026-06-28"
-  },
-  {
-    "title": "标准规范与制度体系",
-    "type": "标准",
-    "path": "entities/标准规范与制度体系.md",
-    "domain": "it-security",
-    "sub_domain": "standards",
-    "tags": [
-      "标准",
-      "法规",
-      "合规"
-    ],
-    "updated": "2026-06-28"
-  },
-  {
-    "title": "漏洞问责管理规范",
-    "type": "制度",
-    "path": "entities/漏洞问责管理规范.md",
-    "domain": "it-security",
-    "sub_domain": "secops",
-    "tags": [
-      "应急响应",
-      "制度",
-      "漏洞管理"
-    ],
-    "updated": "2026-06-28"
-  },
-  {
-    "title": "社会工程学攻击违规处罚实施规范",
-    "type": "制度",
-    "path": "entities/社会工程学攻击违规处罚实施规范.md",
-    "domain": "it-security",
-    "sub_domain": "personnel",
-    "tags": [
-      "社工防范",
-      "制度"
-    ],
-    "updated": "2026-06-28"
-  },
-  {
-    "title": "网络安全事件管理办法",
-    "type": "制度",
-    "path": "entities/网络安全事件管理办法.md",
-    "domain": "it-security",
-    "sub_domain": "secops",
-    "tags": [
-      "应急响应",
-      "制度"
-    ],
-    "updated": "2026-06-28"
-  },
-  {
-    "title": "2026年投资实盘复盘",
-    "type": "报告",
-    "path": "concepts/2026年投资实盘复盘.md",
-    "domain": "investment",
-    "sub_domain": "",
-    "tags": [
-      "投资",
-      "实盘"
-    ],
-    "updated": "2026-06-28"
-  },
-  {
-    "title": "2026年股票投资实盘记录",
-    "type": "报告",
-    "path": "concepts/2026年股票投资实盘记录.md",
-    "domain": "investment",
-    "sub_domain": "",
-    "tags": [
-      "投资",
-      "实盘"
-    ],
-    "updated": "2026-06-28"
-  },
-  {
-    "title": "A股板块低估值轮动筛选日报",
-    "type": "报告",
-    "path": "concepts/a股板块低估值轮动筛选日报.md",
-    "domain": "investment",
-    "sub_domain": "",
-    "tags": [
-      "投资",
-      "板块轮动"
-    ],
-    "updated": "2026-06-28"
-  },
-  {
     "title": "互联网SRC运营方案及成效",
     "type": "方案",
-    "path": "concepts/互联网src运营方案及成效.md",
+    "path": "IT网络与数据安全/互联网src运营方案及成效.md",
     "domain": "it-security",
-    "sub_domain": "secops",
+    "sub_domain": "",
     "tags": [
       "应急响应",
       "制度",
@@ -212,9 +40,9 @@
   {
     "title": "信息安全周报",
     "type": "报告",
-    "path": "concepts/信息安全周报.md",
+    "path": "IT网络与数据安全/信息安全周报.md",
     "domain": "it-security",
-    "sub_domain": "secops",
+    "sub_domain": "",
     "tags": [
       "应急响应",
       "制度",
@@ -223,11 +51,35 @@
     "updated": "2026-06-28"
   },
   {
+    "title": "信息安全红线制度",
+    "type": "制度",
+    "path": "IT网络与数据安全/信息安全红线制度.md",
+    "domain": "it-security",
+    "sub_domain": "",
+    "tags": [
+      "治理",
+      "制度"
+    ],
+    "updated": "2026-06-28"
+  },
+  {
+    "title": "信息安全违规问责管理办法",
+    "type": "制度",
+    "path": "IT网络与数据安全/信息安全违规问责管理办法.md",
+    "domain": "it-security",
+    "sub_domain": "",
+    "tags": [
+      "治理",
+      "制度"
+    ],
+    "updated": "2026-06-28"
+  },
+  {
     "title": "信息科技外包",
     "type": "制度",
-    "path": "concepts/信息科技外包.md",
+    "path": "IT网络与数据安全/信息科技外包.md",
     "domain": "it-security",
-    "sub_domain": "supply-chain",
+    "sub_domain": "",
     "tags": [
       "供应链",
       "制度"
@@ -235,11 +87,61 @@
     "updated": "2026-06-28"
   },
   {
+    "title": "信息科技外包风险管理评估报告",
+    "type": "报告",
+    "path": "IT网络与数据安全/信息科技外包风险管理评估报告.md",
+    "domain": "it-security",
+    "sub_domain": "",
+    "tags": [
+      "风险管理",
+      "报告",
+      "供应链"
+    ],
+    "updated": "2026-06-28"
+  },
+  {
+    "title": "信息科技风险管理报告",
+    "type": "报告",
+    "path": "IT网络与数据安全/信息科技风险管理报告.md",
+    "domain": "it-security",
+    "sub_domain": "",
+    "tags": [
+      "风险管理",
+      "报告"
+    ],
+    "updated": "2026-06-28"
+  },
+  {
+    "title": "办公云桌面IT安全管理规范",
+    "type": "制度",
+    "path": "IT网络与数据安全/办公云桌面it安全管理规范.md",
+    "domain": "it-security",
+    "sub_domain": "",
+    "tags": [
+      "终端安全",
+      "制度",
+      "云桌面"
+    ],
+    "updated": "2026-06-28"
+  },
+  {
+    "title": "办公终端产品选型需求清单",
+    "type": "方案",
+    "path": "IT网络与数据安全/办公终端产品选型需求清单.md",
+    "domain": "it-security",
+    "sub_domain": "",
+    "tags": [
+      "终端安全",
+      "制度"
+    ],
+    "updated": "2026-06-28"
+  },
+  {
     "title": "合作方与供应链管理",
     "type": "制度",
-    "path": "concepts/合作方与供应链管理.md",
+    "path": "IT网络与数据安全/合作方与供应链管理.md",
     "domain": "it-security",
-    "sub_domain": "supply-chain",
+    "sub_domain": "",
     "tags": [
       "供应链",
       "制度"
@@ -249,9 +151,9 @@
   {
     "title": "安全架构基本法",
     "type": "制度",
-    "path": "concepts/安全架构基本法.md",
+    "path": "IT网络与数据安全/安全架构基本法.md",
     "domain": "it-security",
-    "sub_domain": "governance",
+    "sub_domain": "",
     "tags": [
       "治理",
       "制度",
@@ -260,46 +162,11 @@
     "updated": "2026-06-28"
   },
   {
-    "title": "小米辣·A股仪表盘",
-    "type": "方案",
-    "path": "concepts/小米辣-a股仪表盘.md",
-    "domain": "investment",
-    "sub_domain": "",
-    "tags": [
-      "投资",
-      "仪表盘"
-    ],
-    "updated": "2026-06-28"
-  },
-  {
-    "title": "小米辣的测试文档",
-    "type": "案例",
-    "path": "concepts/小米辣的测试文档.md",
-    "domain": "daily",
-    "sub_domain": "",
-    "tags": [
-      "日常"
-    ],
-    "updated": "2026-06-28"
-  },
-  {
-    "title": "投资最重要的事蒸馏笔记",
-    "type": "报告",
-    "path": "concepts/投资最重要的事蒸馏笔记.md",
-    "domain": "investment",
-    "sub_domain": "",
-    "tags": [
-      "投资",
-      "读书笔记"
-    ],
-    "updated": "2026-06-28"
-  },
-  {
     "title": "护网准备工作",
     "type": "方案",
-    "path": "concepts/护网准备工作.md",
+    "path": "IT网络与数据安全/护网准备工作.md",
     "domain": "it-security",
-    "sub_domain": "secops",
+    "sub_domain": "",
     "tags": [
       "应急响应",
       "制度",
@@ -310,9 +177,9 @@
   {
     "title": "数据分类分级管理实施细则",
     "type": "制度",
-    "path": "concepts/数据分类分级管理实施细则.md",
+    "path": "IT网络与数据安全/数据分类分级管理实施细则.md",
     "domain": "it-security",
-    "sub_domain": "data-security",
+    "sub_domain": "",
     "tags": [
       "数据安全",
       "制度"
@@ -322,9 +189,9 @@
   {
     "title": "数据安全",
     "type": "制度",
-    "path": "concepts/数据安全.md",
+    "path": "IT网络与数据安全/数据安全.md",
     "domain": "it-security",
-    "sub_domain": "data-security",
+    "sub_domain": "",
     "tags": [
       "数据安全",
       "制度"
@@ -332,9 +199,107 @@
     "updated": "2026-06-28"
   },
   {
+    "title": "数据安全管理制度",
+    "type": "制度",
+    "path": "IT网络与数据安全/数据安全管理制度.md",
+    "domain": "it-security",
+    "sub_domain": "",
+    "tags": [
+      "数据安全",
+      "制度"
+    ],
+    "updated": "2026-06-28"
+  },
+  {
+    "title": "标准规范与制度体系",
+    "type": "标准",
+    "path": "IT网络与数据安全/标准规范与制度体系.md",
+    "domain": "it-security",
+    "sub_domain": "",
+    "tags": [
+      "标准",
+      "法规",
+      "合规"
+    ],
+    "updated": "2026-06-28"
+  },
+  {
+    "title": "漏洞问责管理规范",
+    "type": "制度",
+    "path": "IT网络与数据安全/漏洞问责管理规范.md",
+    "domain": "it-security",
+    "sub_domain": "",
+    "tags": [
+      "应急响应",
+      "制度",
+      "漏洞管理"
+    ],
+    "updated": "2026-06-28"
+  },
+  {
+    "title": "社会工程学攻击违规处罚实施规范",
+    "type": "制度",
+    "path": "IT网络与数据安全/社会工程学攻击违规处罚实施规范.md",
+    "domain": "it-security",
+    "sub_domain": "",
+    "tags": [
+      "社工防范",
+      "制度"
+    ],
+    "updated": "2026-06-28"
+  },
+  {
+    "title": "社工钓鱼案例",
+    "type": "案例",
+    "path": "IT网络与数据安全/社工钓鱼案例.md",
+    "domain": "it-security",
+    "sub_domain": "",
+    "tags": [
+      "社工防范",
+      "制度"
+    ],
+    "updated": "2026-06-28"
+  },
+  {
+    "title": "终端安全",
+    "type": "制度",
+    "path": "IT网络与数据安全/终端安全.md",
+    "domain": "it-security",
+    "sub_domain": "",
+    "tags": [
+      "终端安全",
+      "制度"
+    ],
+    "updated": "2026-06-28"
+  },
+  {
+    "title": "网络安全事件管理办法",
+    "type": "制度",
+    "path": "IT网络与数据安全/网络安全事件管理办法.md",
+    "domain": "it-security",
+    "sub_domain": "",
+    "tags": [
+      "应急响应",
+      "制度"
+    ],
+    "updated": "2026-06-28"
+  },
+  {
+    "title": "网络攻防",
+    "type": "方案",
+    "path": "IT网络与数据安全/网络攻防.md",
+    "domain": "it-security",
+    "sub_domain": "",
+    "tags": [
+      "应急响应",
+      "制度"
+    ],
+    "updated": "2026-06-28"
+  },
+  {
     "title": "智能汽车信息安全测试方案",
     "type": "方案",
-    "path": "concepts/智能汽车信息安全测试方案.md",
+    "path": "智能网联汽车安全/智能汽车信息安全测试方案.md",
     "domain": "auto-security",
     "sub_domain": "",
     "tags": [
@@ -346,7 +311,7 @@
   {
     "title": "智能网联汽车PIA合规测试方案",
     "type": "方案",
-    "path": "concepts/智能网联汽车pia合规测试方案.md",
+    "path": "智能网联汽车安全/智能网联汽车pia合规测试方案.md",
     "domain": "auto-security",
     "sub_domain": "",
     "tags": [
@@ -359,7 +324,7 @@
   {
     "title": "智能网联汽车安全行业动态（2023年综述）",
     "type": "报告",
-    "path": "concepts/智能网联汽车安全行业动态.md",
+    "path": "智能网联汽车安全/智能网联汽车安全行业动态.md",
     "domain": "auto-security",
     "sub_domain": "",
     "tags": [
@@ -374,7 +339,7 @@
   {
     "title": "汽车数据安全预测试用例 — 实施方案",
     "type": "方案",
-    "path": "concepts/汽车数据安全预测试用例-实施方案.md",
+    "path": "智能网联汽车安全/汽车数据安全预测试用例-实施方案.md",
     "domain": "auto-security",
     "sub_domain": "",
     "tags": [
@@ -386,7 +351,7 @@
   {
     "title": "汽车数据安全预测试用例 - 第1批：CDC + ADC",
     "type": "方案",
-    "path": "concepts/汽车数据安全预测试用例-第1批-cdc-adc.md",
+    "path": "智能网联汽车安全/汽车数据安全预测试用例-第1批-cdc-adc.md",
     "domain": "auto-security",
     "sub_domain": "",
     "tags": [
@@ -398,7 +363,7 @@
   {
     "title": "汽车数据安全预测试用例 - 第2批：TSP + Tbox",
     "type": "方案",
-    "path": "concepts/汽车数据安全预测试用例-第2批-tsp-tbox.md",
+    "path": "智能网联汽车安全/汽车数据安全预测试用例-第2批-tsp-tbox.md",
     "domain": "auto-security",
     "sub_domain": "",
     "tags": [
@@ -410,7 +375,7 @@
   {
     "title": "汽车数据安全预测试用例 - 第3批：手机App + AIbox",
     "type": "方案",
-    "path": "concepts/汽车数据安全预测试用例-第3批-手机app-aibox.md",
+    "path": "智能网联汽车安全/汽车数据安全预测试用例-第3批-手机app-aibox.md",
     "domain": "auto-security",
     "sub_domain": "",
     "tags": [
@@ -422,7 +387,7 @@
   {
     "title": "汽车数据安全预测试用例 - 第4批：生态App + 销服售后",
     "type": "方案",
-    "path": "concepts/汽车数据安全预测试用例-第4批-生态app-销服售后.md",
+    "path": "智能网联汽车安全/汽车数据安全预测试用例-第4批-生态app-销服售后.md",
     "domain": "auto-security",
     "sub_domain": "",
     "tags": [
@@ -434,7 +399,7 @@
   {
     "title": "汽车数据安全预测试用例 - 第5批：小程序 + ZCM",
     "type": "方案",
-    "path": "concepts/汽车数据安全预测试用例-第5批-小程序-zcm.md",
+    "path": "智能网联汽车安全/汽车数据安全预测试用例-第5批-小程序-zcm.md",
     "domain": "auto-security",
     "sub_domain": "",
     "tags": [
@@ -444,9 +409,69 @@
     "updated": "2026-06-28"
   },
   {
+    "title": "2026年投资实盘复盘",
+    "type": "报告",
+    "path": "投资之路/2026年投资实盘复盘.md",
+    "domain": "investment",
+    "sub_domain": "",
+    "tags": [
+      "投资",
+      "实盘"
+    ],
+    "updated": "2026-06-28"
+  },
+  {
+    "title": "2026年股票投资实盘记录",
+    "type": "报告",
+    "path": "投资之路/2026年股票投资实盘记录.md",
+    "domain": "investment",
+    "sub_domain": "",
+    "tags": [
+      "投资",
+      "实盘"
+    ],
+    "updated": "2026-06-28"
+  },
+  {
+    "title": "A股板块低估值轮动筛选日报",
+    "type": "报告",
+    "path": "投资之路/a股板块低估值轮动筛选日报.md",
+    "domain": "investment",
+    "sub_domain": "",
+    "tags": [
+      "投资",
+      "板块轮动"
+    ],
+    "updated": "2026-06-28"
+  },
+  {
+    "title": "小米辣·A股仪表盘",
+    "type": "方案",
+    "path": "投资之路/小米辣-a股仪表盘.md",
+    "domain": "investment",
+    "sub_domain": "",
+    "tags": [
+      "投资",
+      "仪表盘"
+    ],
+    "updated": "2026-06-28"
+  },
+  {
+    "title": "投资最重要的事蒸馏笔记",
+    "type": "报告",
+    "path": "投资之路/投资最重要的事蒸馏笔记.md",
+    "domain": "investment",
+    "sub_domain": "",
+    "tags": [
+      "投资",
+      "读书笔记"
+    ],
+    "updated": "2026-06-28"
+  },
+  {
     "title": "汽车板块低估值轮动分析",
     "type": "报告",
-    "path": "concepts/汽车板块低估值轮动分析.md",
+    "path": "投资之路/汽车板块低估值轮动分析.md",
     "domain": "investment",
     "sub_domain": "",
     "tags": [
@@ -456,50 +481,25 @@
     "updated": "2026-06-28"
   },
   {
-    "title": "社工钓鱼案例",
-    "type": "案例",
-    "path": "concepts/社工钓鱼案例.md",
-    "domain": "it-security",
-    "sub_domain": "personnel",
-    "tags": [
-      "社工防范",
-      "制度"
-    ],
-    "updated": "2026-06-28"
-  },
-  {
-    "title": "终端安全",
-    "type": "制度",
-    "path": "concepts/终端安全.md",
-    "domain": "it-security",
-    "sub_domain": "infra-endpoint",
-    "tags": [
-      "终端安全",
-      "制度"
-    ],
-    "updated": "2026-06-28"
-  },
-  {
-    "title": "网络攻防",
-    "type": "方案",
-    "path": "concepts/网络攻防.md",
-    "domain": "it-security",
-    "sub_domain": "secops",
-    "tags": [
-      "应急响应",
-      "制度"
-    ],
-    "updated": "2026-06-28"
-  },
-  {
     "title": "股票投资分析报告",
     "type": "报告",
-    "path": "concepts/股票投资分析报告.md",
+    "path": "投资之路/股票投资分析报告.md",
     "domain": "investment",
     "sub_domain": "",
     "tags": [
       "投资",
       "个股分析"
+    ],
+    "updated": "2026-06-28"
+  },
+  {
+    "title": "小米辣的测试文档",
+    "type": "案例",
+    "path": "日常与AI/小米辣的测试文档.md",
+    "domain": "daily",
+    "sub_domain": "",
+    "tags": [
+      "日常"
     ],
     "updated": "2026-06-28"
   }

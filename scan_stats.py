@@ -4,7 +4,7 @@ import os, json, re, time
 from datetime import datetime
 
 WIKI = "/home/admin/wiki-info-sec"
-PAGE_DIRS = ["entities", "concepts", "comparisons", "queries"]
+PAGE_DIRS = ["IT网络与数据安全", "智能网联汽车安全", "投资之路", "日常与AI"]
 
 # 加载板块配置
 with open(os.path.join(WIKI, "domains.json")) as f:
