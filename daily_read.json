@@ -1,27 +1,75 @@
 {
-  "date": "2026-06-28",
+  "date": "2026-07-05",
   "articles": [
     {
-      "path": "entities/app安全管理制度.md",
-      "title": "APP安全管理制度",
+      "path": "entities/网络安全事件管理办法.md",
+      "title": "网络安全事件管理办法",
       "domain": "it-security",
       "type": "制度"
     },
     {
-      "path": "entities/dlp采购需求清单.md",
-      "title": "dlp采购需求清单",
-      "domain": "it-security",
-      "type": "方案"
+      "path": "concepts/2026年投资实盘复盘.md",
+      "title": "2026年投资实盘复盘",
+      "domain": "investment",
+      "type": "报告"
     }
   ],
   "history": {
     "entities/app安全管理制度.md": {
       "times": 1,
-      "last_read": ""
+      "last_read": "2026-06-28"
     },
     "entities/dlp采购需求清单.md": {
       "times": 1,
-      "last_read": ""
+      "last_read": "2026-06-28"
+    },
+    "entities/信息安全红线制度.md": {
+      "times": 1,
+      "last_read": "2026-06-29"
+    },
+    "entities/信息安全违规问责管理办法.md": {
+      "times": 1,
+      "last_read": "2026-06-29"
+    },
+    "entities/信息科技外包风险管理评估报告.md": {
+      "times": 1,
+      "last_read": "2026-06-30"
+    },
+    "entities/信息科技风险管理报告.md": {
+      "times": 1,
+      "last_read": "2026-06-30"
+    },
+    "entities/办公云桌面it安全管理规范.md": {
+      "times": 1,
+      "last_read": "2026-07-01"
+    },
+    "entities/办公终端产品选型需求清单.md": {
+      "times": 1,
+      "last_read": "2026-07-01"
+    },
+    "entities/数据安全管理制度.md": {
+      "times": 1,
+      "last_read": "2026-07-03"
+    },
+    "entities/标准规范与制度体系.md": {
+      "times": 1,
+      "last_read": "2026-07-03"
+    },
+    "entities/漏洞问责管理规范.md": {
+      "times": 1,
+      "last_read": "2026-07-04"
+    },
+    "entities/社会工程学攻击违规处罚实施规范.md": {
+      "times": 1,
+      "last_read": "2026-07-04"
+    },
+    "entities/网络安全事件管理办法.md": {
+      "times": 1,
+      "last_read": "2026-07-05"
+    },
+    "concepts/2026年投资实盘复盘.md": {
+      "times": 1,
+      "last_read": "2026-07-05"
     }
   }
 }

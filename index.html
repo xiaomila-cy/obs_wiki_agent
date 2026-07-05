@@ -70,6 +70,20 @@ body{font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans SC
 .backlinks h2{font-size:.9rem;color:var(--muted);margin-bottom:.5rem;border:none;padding:0}
 .backlinks a{display:inline-block;margin:.15rem .5rem .15rem 0;font-size:.82rem;color:var(--blue);text-decoration:none}
 .backlinks a:hover{text-decoration:underline}
+/* Tables */
+.table-wrap{overflow-x:auto;margin:.8rem 0}
+.table-wrap table{width:100%;border-collapse:collapse;font-size:.85rem}
+.table-wrap th,.table-wrap td{padding:.4rem .7rem;text-align:left;border:1px solid var(--border)}
+.table-wrap th{background:var(--hover);font-weight:600}
+/* Callouts */
+.callout{border-left:4px solid var(--blue);padding:.6rem 1rem;margin:.8rem 0;border-radius:0 8px 8px 0;background:var(--hover);font-size:.88rem}
+.callout-title{font-weight:700;margin-bottom:.3rem;font-size:.82rem;text-transform:uppercase;letter-spacing:.5px}
+.callout-note{border-left-color:var(--blue)}
+.callout-warning{border-left-color:#f59e0b}
+.callout-danger{border-left-color:#ef4444}
+.callout-tip{border-left-color:#22c55e}
+.callout-info{border-left-color:#3b82f6}
+.callout-example{border-left-color:#a855f7}
 .breadcrumb{font-size:.78rem;color:var(--muted);margin-bottom:1rem}.breadcrumb a{color:var(--blue);text-decoration:none}
 .empty{text-align:center;padding:3rem 1rem;color:var(--muted)}.empty h2{font-size:1rem;color:var(--text);margin-bottom:.3rem}
 .s-results{position:absolute;top:100%;left:0;right:0;background:var(--surface);border:1px solid var(--border);border-radius:8px;box-shadow:var(--shadow-sm);max-height:300px;overflow-y:auto;z-index:30;display:none}
@@ -238,28 +252,89 @@ async function viewPage(path,title){currentView='page';
   document.getElementById('content').innerHTML='<div class="empty"><p>加载中...</p></div>';
   try{
     var r=await fetch(path);var md=await r.text();
+    var fm={};var fmMatch=md.match(/^---\n([\s\S]*?)\n---/);if(fmMatch){fmMatch[1].split('\n').forEach(function(l){var kv=l.split(':');if(kv.length>=2)fm[kv[0].trim()]=kv.slice(1).join(':').trim()})}
     md=md.replace(/^---[\s\S]*?---\n*/,'');
-    // Build TOC
-    var toc=[];
+    
+    // Pass 1: pre-process inline formatting
     var lines=md.split('\n');
-    var h='';var inPre=false;
+    var toc=[],h='';
+    var inTable=false,inCode=false,tableRows=[],calloutType='',calloutContent=[];
+    
+    function renderInline(text){
+      if(!text)return'';
+      text=text.replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>');
+      text=text.replace(/`([^`]+)`/g,'<code>$1</code>');
+      text=text.replace(/\[([^\]]+)\]\(([^)]+)\)/g,'<a href="$2" target="_blank">$1</a>');
+      return text
+    }
+    
+    function flushTable(){
+      if(tableRows.length===0)return'';
+      var out='<div class="table-wrap"><table>';
+      tableRows.forEach(function(row,ri){
+        if(ri===0&&row.every(function(c){return /^[-:]+$/.test(c)}))return;
+        if(ri===1&&tableRows[0]&&row.length===tableRows[0].length&&row.every(function(c){return /^[-:]+$/.test(c)}))return;
+        out+='<tr>';
+        row.forEach(function(c){out+=(ri===0?'<th>':'<td>')+renderInline(c)+'</td>'});
+        out+='</tr>'
+      });
+      out+='</table></div>';
+      tableRows=[];inTable=false;
+      return out
+    }
+    
+    function flushCallout(){
+      if(!calloutType||calloutContent.length===0)return'';
+      var cls='callout callout-'+calloutType;
+      var title=calloutType.charAt(0).toUpperCase()+calloutType.slice(1);
+      var out='<div class="'+cls+'"><div class="callout-title">'+title+'</div>'+calloutContent.map(function(l){return'<p>'+renderInline(l)+'</p>'}).join('')+'</div>';
+      calloutType='';calloutContent=[];
+      return out
+    }
+    
     for(var i=0;i<lines.length;i++){
       var l=lines[i].trim();
-      if(l.startsWith('```')){inPre=!inPre;continue}
-      if(inPre){h+='\n'+l;continue}
-      if(l.startsWith('# ')){toc.push({t:l.slice(2),id:'h-'+i,level:1});h+='<h1 id="h-'+i+'">'+l.slice(2)+'</h1>'}
-      else if(l.startsWith('## ')){toc.push({t:l.slice(3),id:'h-'+i,level:2});h+='<h2 id="h-'+i+'">'+l.slice(3)+'</h2>'}
-      else if(l.startsWith('### ')){toc.push({t:l.slice(4),id:'h-'+i,level:3});h+='<h3 id="h-'+i+'">'+l.slice(4)+'</h3>'}
-      else if(l.startsWith('- ')){h+='<li>'+l.slice(2)+'</li>'}
-      else if(l.match(/^\d+\. /)){h+='<li>'+l.replace(/^\d+\. /,'')+'</li>'}
-      else if(l.startsWith('> ')){h+='<blockquote>'+l.slice(2)+'</blockquote>'}
+      if(inCode){if(l.startsWith('```')){inCode=false;h+='</code></pre>'}else{h+='\n'+l.replace(/</g,'&lt;')}continue}
+      
+      // Code block start
+      if(l.startsWith('```')){inCode=true;h+=l.startsWith('``` ')?'<pre><code>':'<pre><code>';continue}
+      
+      // Table
+      if(l.startsWith('|')&&l.endsWith('|')){
+        if(!inTable){inTable=true;tableRows=[]}
+        tableRows.push(l.split('|').slice(1,-1).map(function(c){return c.trim()}));
+        continue
+      }else if(inTable){h+=flushTable()}
+      
+      // Callout
+      var calloutMatch=l.match(/^>\s*\[!(\w+)\]\s*(.*)/);
+      if(calloutMatch){
+        if(calloutType)h+=flushCallout();
+        calloutType=calloutMatch[1].toLowerCase();
+        if(calloutMatch[2])calloutContent.push(calloutMatch[2]);
+        continue
+      }else if(calloutType&&l.startsWith('>')){
+        calloutContent.push(l.slice(1).trim());
+        continue
+      }else if(calloutType&&!l.startsWith('>')){h+=flushCallout()}
+      
+      // Headings
+      if(l.startsWith('# ')){toc.push({t:l.slice(2),id:'h-'+i,level:1});h+='<h1 id="h-'+i+'">'+renderInline(l.slice(2))+'</h1>'}
+      else if(l.startsWith('## ')){toc.push({t:l.slice(3),id:'h-'+i,level:2});h+='<h2 id="h-'+i+'">'+renderInline(l.slice(3))+'</h2>'}
+      else if(l.startsWith('### ')){toc.push({t:l.slice(4),id:'h-'+i,level:3});h+='<h3 id="h-'+i+'">'+renderInline(l.slice(4))+'</h3>'}
+      else if(l.startsWith('- ')){h+='<li>'+renderInline(l.slice(2))+'</li>'}
+      else if(l.match(/^\d+\. /)){h+='<li>'+renderInline(l.replace(/^\d+\. /,''))+'</li>'}
+      else if(l.startsWith('> ')){h+='<blockquote>'+renderInline(l.slice(2))+'</blockquote>'}
       else if(l.match(/^!\[\[(.+)\]\]$/)){var img=l.match(/^!\[\[(.+)\]\]$/)[1];h+='<img src="raw/assets/'+img+'" alt="'+img+'" style="max-width:100%;border-radius:8px;margin:.5rem 0" loading="lazy">'}
       else if(l.match(/^!\[.*\]\((.+)\)$/)){var img2=l.match(/^!\[.*\]\((.+)\)$/)[1];h+='<img src="'+img2+'" alt="" style="max-width:100%;border-radius:8px;margin:.5rem 0" loading="lazy">'}
-      else if(l){h+='<p>'+l+'</p>'}
+      else if(l){h+='<p>'+renderInline(l)+'</p>'}
     }
+    if(inTable)h+=flushTable();
+    if(calloutType)h+=flushCallout();
+    if(inCode)h+='</code></pre>';
+    
     h=h.replace(/((?:<li>[^<]*<\/li>\s*)+)/g,'<ul>$1</ul>');
-    // Reading time from frontmatter
-    var rt='';var rtm=md.match(/reading_time:\s*(.+)/);if(rtm)rt=rtm[1];
+    var rt=fm['reading_time']||'';
     // Render TOC
     var tc='';
     toc.forEach(function(e){tc+='<a href="#'+e.id+'" class="'+(e.level>1?'indent':'')+'">'+e.t+'</a>'});
