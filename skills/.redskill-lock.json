@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "skills": {
+    "daily-bookcast": {
+      "name": "daily-bookcast",
+      "version": "1.0.0",
+      "source": "redskill",
+      "install_dir": "/home/admin/wiki-info-sec/skills/daily-bookcast",
+      "installed_at": "1784595743184",
+      "sha256": "e3301a8c7dc871002a5a01089faa4b6e1cd088fcc973dedca4b697caf25fcd7c"
+    }
+  }
+}
